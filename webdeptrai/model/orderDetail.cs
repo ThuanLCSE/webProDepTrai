@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
 
-namespace Project
+namespace ProjectWeb
 {
     class orderDetail: DTOabs
     {
@@ -75,7 +74,7 @@ namespace Project
               }
             catch (Exception e)
             {
-                MessageBox.Show("This order detail can not be updated");
+                
             }
             return true;
         }

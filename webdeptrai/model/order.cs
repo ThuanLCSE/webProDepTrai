@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
 
-namespace Project
+namespace ProjectWeb
 {
     class order:DTOabs
     {
@@ -69,7 +68,7 @@ namespace Project
                 }
             catch (Exception e)
             {
-                MessageBox.Show("This order can not be inserted");
+                
             }
             return true;
         }
@@ -129,7 +128,7 @@ namespace Project
                 }
             catch (Exception e)
             {
-                MessageBox.Show("This order can not be updated");
+                
             }
             return true;
         }

@@ -1,0 +1,6 @@
+C:\Users\BuiPhu\Documents\Visual Studio 2008\Projects\ProjectWeb\ProjectWeb\bin\ProjectWeb.dll
+C:\Users\BuiPhu\Documents\Visual Studio 2008\Projects\ProjectWeb\ProjectWeb\bin\ProjectWeb.pdb
+C:\Users\BuiPhu\Documents\Visual Studio 2008\Projects\ProjectWeb\ProjectWeb\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\BuiPhu\Documents\Visual Studio 2008\Projects\ProjectWeb\ProjectWeb\obj\Debug\ProjectWeb.dll
+C:\Users\BuiPhu\Documents\Visual Studio 2008\Projects\ProjectWeb\ProjectWeb\obj\Debug\ProjectWeb.pdb
+C:\Users\BuiPhu\Documents\Visual Studio 2008\Projects\ProjectWeb\ProjectWeb\bin\ProjectWeb.dll.config

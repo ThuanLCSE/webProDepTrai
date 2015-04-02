@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace webdeptrai
+namespace ProjectWeb
 {
     class Categori : DTOabs
     {

@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
-namespace Project
+namespace ProjectWeb
 {
     class customer:DTOabs
     {
@@ -121,7 +120,7 @@ namespace Project
             }
             catch (Exception e)
             {
-                MessageBox.Show("This customer can not be delete");
+                
             }
             return true;
 

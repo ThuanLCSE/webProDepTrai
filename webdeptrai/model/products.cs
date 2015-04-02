@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
 
-namespace Project
+namespace ProjectWeb
 {
     class products:DTOabs
     {
@@ -47,7 +46,7 @@ namespace Project
              }
             catch (Exception e)
             {
-                MessageBox.Show("This product can not be inserted");
+                
             }
             return true;
         }
@@ -85,7 +84,7 @@ namespace Project
                       }
             catch (Exception e)
             {
-                MessageBox.Show("This product can not be updated");
+                
             }
           
             return true;
@@ -107,7 +106,7 @@ namespace Project
                 }
             catch (Exception e)
             {
-                MessageBox.Show("This product can not be updated");
+                
             }
             return true;
         }

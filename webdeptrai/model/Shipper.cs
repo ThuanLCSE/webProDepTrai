@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
 
-namespace Project
+namespace ProjectWeb
 {
     class Shipper:DTOabs
     {
@@ -73,7 +72,7 @@ namespace Project
              }
             catch (Exception e)
             {
-                MessageBox.Show("This supplier can not be delete");
+                
             }
             return true;
        

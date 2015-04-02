@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace webdeptrai
+namespace ProjectWeb
 {
     
     abstract class DTOabs:objectInterface

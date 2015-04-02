@@ -4,7 +4,7 @@ using System.Linq;
 using System.Data.SqlClient;
 
 
-namespace Project.DAO
+namespace ProjectWeb.DAO
 {
     public class getCon
     {
