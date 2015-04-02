@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace ProjectWeb
 {
@@ -37,14 +38,42 @@ namespace ProjectWeb
             gvShipper.DataBind();
         }
 
+        void AddShipper()
+        {
+            List<String> list = new List<string>();
+            list.Add(this.txtCompanyName.Text);
+            list.Add(this.txtPhone.Text);
+            new Shipper().insert(list);
+        }
+
+        void UpdateShipper()
+        {
+            GridViewRow r = gvShipper.SelectedRow;
+            List<String> list = new List<string>();
+            list.Add(this.txtCompanyName.Text);
+            list.Add(this.txtPhone.Text);
+            new Shipper().update(Int32.Parse(lblShipperID.Text), list);
+        }
+
+        void DeleteShipper()
+        {
+            if (lblShipperID.Text != "")
+            {
+                new Shipper().delete(Int32.Parse(lblShipperID.Text));
+            }
+            
+        }
+
         protected void btnAddShipper_Click(object sender, EventArgs e)
         {
-
+            AddShipper();
+            LoadShipper();
         }
 
         protected void btnUpdateShipper_Click(object sender, EventArgs e)
         {
-
+            UpdateShipper();
+            LoadShipper();
         }
 
         protected void btnDelteShipper_Click(object sender, EventArgs e)

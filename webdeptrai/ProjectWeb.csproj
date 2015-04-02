@@ -60,6 +60,14 @@
     <Compile Include="DAO\getCon.cs" />
     <Compile Include="DTO\DTOabs.cs" />
     <Compile Include="DTO\objectInterface.cs" />
+    <Compile Include="Employee.aspx.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.master.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="model\Categori.cs" />
     <Compile Include="model\customer.cs" />
     <Compile Include="model\employee.cs" />
@@ -68,6 +76,10 @@
     <Compile Include="model\products.cs" />
     <Compile Include="model\Shipper.cs" />
     <Compile Include="model\Supplier.cs" />
+    <Compile Include="Order.aspx.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Categories.aspx.cs">
       <DependentUpon>Categories.aspx</DependentUpon>
@@ -87,7 +99,12 @@
   <ItemGroup>
     <Content Include="DAO\App.config" />
     <Content Include="DTO\test.txt" />
+    <Content Include="Employee.aspx" />
+    <Content Include="Order.aspx" />
     <Content Include="Shipper.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPage.master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
