@@ -5,9 +5,8 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace ProjectWeb
-{
-    class order:DTOabs
+
+    public class order:DTOabs
     {
        
         public order():base()
@@ -242,4 +241,3 @@ namespace ProjectWeb
         }
         #endregion
     }
-}

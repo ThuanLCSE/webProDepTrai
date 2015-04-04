@@ -5,9 +5,8 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace ProjectWeb
-{
-    class employee:DTOabs
+
+    public class employee:DTOabs
     {
         
         public employee():base()
@@ -203,4 +202,3 @@ namespace ProjectWeb
         }
         #endregion
     }
-}

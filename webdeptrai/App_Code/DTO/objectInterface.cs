@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace ProjectWeb
-{
     interface objectInterface
     {
          Boolean insert(List<String> str);
@@ -14,4 +12,3 @@ namespace ProjectWeb
          SqlDataReader search(int id,List<String> str);
          SqlDataReader select();
     }
-}

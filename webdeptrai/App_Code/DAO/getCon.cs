@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
 
-
-namespace ProjectWeb.DAO
-{
     public class getCon
     {
         public System.Data.SqlClient.SqlConnection con;
@@ -21,4 +18,3 @@ namespace ProjectWeb.DAO
             return con;
         }
     }
-}

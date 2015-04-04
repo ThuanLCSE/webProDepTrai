@@ -5,9 +5,8 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace ProjectWeb
-{
-    class orderDetail: DTOabs
+
+    public class orderDetail: DTOabs
     {
         public orderDetail():base()
         {
@@ -152,4 +151,3 @@ namespace ProjectWeb
         #endregion
     }
 
-}

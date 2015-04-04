@@ -22,6 +22,7 @@ public partial class Categories : System.Web.UI.Page
 
     void LoadCategories()
     {
+        
         System.Data.SqlClient.SqlDataReader dr = (new Categori()).select();
         gvCategories.AutoGenerateSelectButton = true;
         //gvCategories.AllowPaging = true;

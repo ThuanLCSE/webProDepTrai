@@ -5,9 +5,8 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace ProjectWeb
-{
-    class products:DTOabs
+
+    public class products:DTOabs
     {
         public products():base()
         {
@@ -163,4 +162,3 @@ namespace ProjectWeb
         }
         #endregion
     }
-}

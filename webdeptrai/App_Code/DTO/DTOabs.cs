@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
   
-    abstract class DTOabs:objectInterface
+    public abstract class DTOabs:objectInterface
     {
         public SqlCommand cmd = new SqlCommand();
         private SqlConnection con;

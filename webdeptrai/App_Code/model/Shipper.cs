@@ -5,9 +5,8 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace ProjectWeb
-{
-    class Shipper1:DTOabs
+
+    public class Shipper1:DTOabs
     {
         public Shipper1()
         {
@@ -109,4 +108,3 @@ namespace ProjectWeb
         }
         #endregion
     }
-}
