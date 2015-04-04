@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Shipper.aspx.cs" Inherits="ProjectWeb.Shipper1" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Shipper.aspx.cs" Inherits="Shipper" %>
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
     <table width="100%">
@@ -8,6 +8,7 @@
             </td>
             <td>
                 <asp:Label ID="lblShipperID" runat="server"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -42,10 +43,13 @@
             <asp:Button ID="btnUpdateShipper" runat="server" Text="Update" 
                 onclick="btnUpdateShipper_Click" />
             <asp:Button ID="btnDelteShipper" runat="server" Text="Delete" 
-                onclick="btnDelteShipper_Click" />
+                onclick="btnDelteShipper_Click" CausesValidation="False" />
             <asp:Button ID="btnClearShipper" runat="server" Text="Clear" 
                 onclick="btnClearShipper_Click" />
             <br />
+            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+        <asp:DropDownList ID="ddlSearch" runat="server">
+        </asp:DropDownList>
             <asp:Button ID="btnSearchShipper" runat="server" Text="Search" 
                 CausesValidation="False" onclick="btnSearchShipper_Click" />
         </td>

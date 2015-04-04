@@ -13,106 +13,107 @@ using System.Xml.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
-namespace ProjectWeb
+public partial class Categories : System.Web.UI.Page
 {
-    public partial class Categories : System.Web.UI.Page
+    protected void Page_Load(object sender, EventArgs e)
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            LoadCategories();
-        }
+        LoadCategories();
+    }
 
-        void LoadCategories()
-        {
-            SqlDataReader dr = (new Categori()).select();
-            gvCategories.AutoGenerateSelectButton = true;
-            //gvCategories.AllowPaging = true;
-            gvCategories.DataSource = dr;
-            gvCategories.DataBind();
-        }
+    void LoadCategories()
+    {
+        System.Data.SqlClient.SqlDataReader dr = (new Categori()).select();
+        gvCategories.AutoGenerateSelectButton = true;
+        //gvCategories.AllowPaging = true;
+        gvCategories.DataSource = dr;
+        gvCategories.DataBind();
+    }
 
-        void AddCategory()
-        {
-            List<String> list = new List<string>();
-            list.Add(this.txtCategoryName.Text);
-            list.Add(this.txtDescription.Text);
-            new Categori().insert(list);
-        }
+    void AddCategory()
+    {
+        List<String> list = new List<string>();
+        list.Add(this.txtCategoryName.Text);
+        list.Add(this.txtDescription.Text);
+        new Categori().insert(list);
+    }
 
-        void UpdateCategory()
-        {
-            List<String> list = new List<string>();
-            list.Add(this.txtCategoryName.Text);
-            list.Add(this.txtDescription.Text);
-            new Categori().update(Int32.Parse(lblCateID.Text), list);
-        }
+    void UpdateCategory()
+    {
+        List<String> list = new List<string>();
+        list.Add(this.txtCategoryName.Text);
+        list.Add(this.txtDescription.Text);
+        new Categori().update(Int32.Parse(lblCateID.Text), list);
+    }
 
-        void SearchCategory()
-        {
-            List<String> list = new List<string>();
-            list.Add(this.txtCategoryName.Text);
-            list.Add(this.txtDescription.Text);
-            SqlDataReader dr = new Categori().search(list);
-            gvCategories.DataSource = dr;
-            gvCategories.DataBind();
-        }
+    void SearchCategory()
+    {
+        List<String> list = new List<string>();
+        list.Add(this.txtCategoryName.Text);
+        list.Add(this.txtDescription.Text);
+        SqlDataReader dr = new Categori().search(list);
+        gvCategories.DataSource = dr;
+        gvCategories.DataBind();
+    }
 
-        protected void AddCate_Click(object sender, EventArgs e)
-        {
-            AddCategory();
-            LoadCategories();
-        }
+    protected void AddCate_Click(object sender, EventArgs e)
+    {
+        AddCategory();
+        LoadCategories();
+    }
 
-        protected void UpdateCate_Click(object sender, EventArgs e)
-        {
-            UpdateCategory();
-            LoadCategories();
-        }
+    protected void UpdateCate_Click(object sender, EventArgs e)
+    {
+        UpdateCategory();
+        LoadCategories();
+    }
 
-        protected void DelteCate_Click(object sender, EventArgs e)
+    protected void DelteCate_Click(object sender, EventArgs e)
+    {
+        if (lblCateID.Text != "")
         {
             new Categori().delete(Int32.Parse(lblCateID.Text));
             LoadCategories();
         }
+        else
+            Response.Write("<script language=\"javascript\">alert(\'Select before delete!!!\');</script>");
+    }
 
-        protected void Clear_Click(object sender, EventArgs e)
+    protected void Clear_Click(object sender, EventArgs e)
+    {
+        lblCateID.Text = "";
+        txtCategoryName.Text = "";
+        txtDescription.Text = "";
+    }
+
+    protected void gvCategories_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        GridViewRow r = gvCategories.SelectedRow;
+        lblCateID.Text = r.Cells[1].Text;
+        txtCategoryName.Text = r.Cells[2].Text;
+        txtDescription.Text = r.Cells[3].Text;
+    }
+
+    protected void btnSearchCate_Click(object sender, EventArgs e)
+    {
+        if (ddlSearch.SelectedValue.ToString().Equals("Category Name"))
         {
-            lblCateID.Text = "";
-            txtCategoryName.Text = "";
-            txtDescription.Text = "";
+            List<String> list = new List<string>();
+            list.Add(txtSearch.Text);
+            list.Add("");
+            SqlDataReader dr = new Categori().search(list);
+            gvCategories.DataSource = null;
+            gvCategories.DataSource = dr;
+            gvCategories.DataBind();
         }
-
-        protected void gvCategories_SelectedIndexChanged(object sender, EventArgs e)
+        else
         {
-            GridViewRow r = gvCategories.SelectedRow;
-            lblCateID.Text = r.Cells[1].Text;
-            txtCategoryName.Text = r.Cells[2].Text;
-            txtDescription.Text = r.Cells[3].Text;
+            List<String> list = new List<string>();
+            list.Add("");
+            list.Add(txtSearch.Text);
+            SqlDataReader dr = new Categori().search(list);
+            gvCategories.DataSource = null;
+            gvCategories.DataSource = dr;
+            gvCategories.DataBind();
         }
-
-        protected void btnSearchCate_Click(object sender, EventArgs e)
-        {
-            if (ddlSearch.SelectedValue.ToString().Equals("Category Name"))
-            {
-                List<String> list = new List<string>();
-                list.Add(txtSearch.Text);
-                list.Add("");
-                SqlDataReader dr = new Categori().search(list);
-                gvCategories.DataSource = null;
-                gvCategories.DataSource = dr;
-                gvCategories.DataBind();
-            }
-            else
-            {
-                List<String> list = new List<string>();
-                list.Add("");
-                list.Add(txtSearch.Text);
-                SqlDataReader dr = new Categori().search(list);
-                gvCategories.DataSource = null;
-                gvCategories.DataSource = dr;
-                gvCategories.DataBind();
-            }
-        }
-
     }
 }

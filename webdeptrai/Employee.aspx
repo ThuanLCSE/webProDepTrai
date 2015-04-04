@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"  CodeFile="Employee.aspx.cs" Inherits="_Default" %>
-<%@ Register Assembly=" %>
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
       <table width="100%">

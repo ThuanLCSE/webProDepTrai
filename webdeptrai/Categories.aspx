@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Categories.aspx.cs" Inherits="ProjectWeb.Categories" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Categories.aspx.cs" Inherits="Categories" %>
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
         <table width="100%">
@@ -59,4 +59,3 @@
         onselectedindexchanged="gvCategories_SelectedIndexChanged">
     </asp:GridView>
 </asp:Content>
-
