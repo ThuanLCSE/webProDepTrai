@@ -64,7 +64,7 @@
           
         </asp:ContentPlaceHolder>
         </div>
-      <div  role="presentation" class="dropdown">
+      <div  role="presentation" style="    width: 40px;" class="dropdown">
         <button id="drop5" href="#" class="btnCus" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
           Search
         </button>
