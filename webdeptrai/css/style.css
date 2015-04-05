@@ -22,7 +22,7 @@
 .menu li:last-child {
   background: 0 0;
 }
-.menu li a
+ .showbox 
 
 {
 	-webkit-transition: 0.5s ease-in-out;
@@ -31,8 +31,11 @@
   transition: 0.5s ease-in-out;
 	color: #abafaf;
 	 text-decoration: none;
+	 display:block;
+	 cursor:pointer;
 }
-.menu li a:hover
+
+ .showbox.slideright:hover 
 {
 	  -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -43,11 +46,96 @@
   color:Black;
   
 }
+.dropdown-menu
+{
+	padding:20px;
+}
+.btnCus {
+  position: relative;
+  vertical-align: top;
+  margin:4px;
+  padding: 7px;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #e74c3c;
+  border: 0;
+  border-bottom: 2px solid #db4334;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #db4334;
+  box-shadow: inset 0 -2px #db4334;
+}
+.btnCus:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-decoration:none;
+}
+
 .pulse2 {
 	-webkit-animation: pulse2 1s linear infinite;
 	-moz-animation: pulse2 1s linear infinite;
 	-ms-animation: pulse2 1s linear infinite;
 	animation: pulse2 1s linear infinite;
+}
+.table {
+		display: table;
+	 	
+	 	width: 100%; 
+	 	background: #fff;
+	 	margin: 0;
+	 	box-sizing: border-box;
+	 	font-family: sans-serif;
+  font-weight: 100;
+
+	 }
+.headTbl {
+	 	background: #8b8b8b;
+	 	color: #fff;
+
+	 }
+
+	.row {
+		border-color: transparent;
+  padding: 6px;
+  border-bottom: 3px solid #e5e5e5;
+  text-align: center;
+		
+	}
+	.selectRow
+	{
+		color:Red;
+	}
+.modal-content
+{
+	  background: #f1f1f1;
+	  border-color: #e74c3c;
+
+  width: 80%px;
+  margin: 0 auto;
+}
+.modal-header
+{
+	color: #fff;
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.modal-body
+{
+	padding:15px;
+	  background: -webkit-radial-gradient(center, ellipse cover, #e5e5e5 0%, #ffffff 100%);
+  background: -o-radial-gradient(center, ellipse cover, #e5e5e5 0%, #ffffff 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #e5e5e5 0%, #ffffff 100%);
+   background: radial-gradient(ellipse at center, #e5e5e5 0%, #ffffff 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5e5e5', endColorstr='#ffffff', GradientType=1);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
 }
 
 @keyframes "pulse2" {
@@ -120,5 +208,3 @@
    -ms-transform: scale(1);
    transform: scale(1);
  }
-
-}
