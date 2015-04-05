@@ -35,6 +35,7 @@ public partial class Shipper : System.Web.UI.Page
         gvShipper.AutoGenerateSelectButton = true;
         gvShipper.DataSource = dr;
         gvShipper.DataBind();
+        dr.Close();
     }
 
     void AddShipper()
@@ -65,21 +66,52 @@ public partial class Shipper : System.Web.UI.Page
             Response.Write("<script language=\"javascript\">alert(\'Select before delete!!!\');</script>");
     }
 
+    void Search()
+    {
+        if (ddlSearch.SelectedValue.ToString().Equals("Company Name"))
+        {
+            List<String> list = new List<string>();
+            list.Add(txtSearch.Text);
+            list.Add("");
+            SqlDataReader dr = new Shipper1().search(list);
+            gvShipper.DataSource = null;
+            gvShipper.DataSource = dr;
+            gvShipper.DataBind();
+        }
+        else
+        {
+            List<String> list = new List<string>();
+            list.Add("");
+            list.Add(txtSearch.Text);
+            SqlDataReader dr = new Shipper1().search(list);
+            gvShipper.DataSource = null;
+            gvShipper.DataSource = dr;
+            gvShipper.DataBind();
+        }
+    }
+
+
+    //Thêm Shipper
     protected void btnAddShipper_Click(object sender, EventArgs e)
     {
         AddShipper();
         LoadShipper();
     }
 
+
+    //Cập nhật Shipper
     protected void btnUpdateShipper_Click(object sender, EventArgs e)
     {
         UpdateShipper();
         LoadShipper();
     }
 
+
+    //Xóa Shipper
     protected void btnDelteShipper_Click(object sender, EventArgs e)
     {
         DeleteShipper();
+        LoadShipper();
     }
 
     protected void btnClearShipper_Click(object sender, EventArgs e)
@@ -90,5 +122,13 @@ public partial class Shipper : System.Web.UI.Page
     protected void btnSearchShipper_Click(object sender, EventArgs e)
     {
 
+    }
+    protected void btnNew_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void btnLoad_Click(object sender, EventArgs e)
+    {
+        LoadShipper();
     }
 }

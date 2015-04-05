@@ -48,12 +48,26 @@ public partial class Categories : System.Web.UI.Page
 
     void SearchCategory()
     {
-        List<String> list = new List<string>();
-        list.Add(this.txtCategoryName.Text);
-        list.Add(this.txtDescription.Text);
-        SqlDataReader dr = new Categori().search(list);
-        gvCategories.DataSource = dr;
-        gvCategories.DataBind();
+        if (ddlSearch.SelectedValue.ToString().Equals("Category Name"))
+        {
+            List<String> list = new List<string>();
+            list.Add(txtSearch.Text);
+            list.Add("");
+            SqlDataReader dr = new Categori().search(list);
+            gvCategories.DataSource = null;
+            gvCategories.DataSource = dr;
+            gvCategories.DataBind();
+        }
+        else
+        {
+            List<String> list = new List<string>();
+            list.Add("");
+            list.Add(txtSearch.Text);
+            SqlDataReader dr = new Categori().search(list);
+            gvCategories.DataSource = null;
+            gvCategories.DataSource = dr;
+            gvCategories.DataBind();
+        }
     }
 
     protected void AddCate_Click(object sender, EventArgs e)
@@ -96,25 +110,14 @@ public partial class Categories : System.Web.UI.Page
 
     protected void btnSearchCate_Click(object sender, EventArgs e)
     {
-        if (ddlSearch.SelectedValue.ToString().Equals("Category Name"))
-        {
-            List<String> list = new List<string>();
-            list.Add(txtSearch.Text);
-            list.Add("");
-            SqlDataReader dr = new Categori().search(list);
-            gvCategories.DataSource = null;
-            gvCategories.DataSource = dr;
-            gvCategories.DataBind();
-        }
-        else
-        {
-            List<String> list = new List<string>();
-            list.Add("");
-            list.Add(txtSearch.Text);
-            SqlDataReader dr = new Categori().search(list);
-            gvCategories.DataSource = null;
-            gvCategories.DataSource = dr;
-            gvCategories.DataBind();
-        }
+        SearchCategory();
+    }
+    protected void btnNew_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void btnLoad_Click(object sender, EventArgs e)
+    {
+        LoadCategories();
     }
 }
