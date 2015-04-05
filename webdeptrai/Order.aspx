@@ -2,21 +2,16 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
-    <table width="100%">
-        <tr >
-            <td width="10%">
-                Order ID :
-            </td>
-            <td>
-                <asp:Label ID="lblOrderID" runat="server"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Customer Name:
-            </td>
-            <td>
-                <asp:DropDownList ID="DDLCus" runat="server" 
+    <div width="100%">
+        
+        <div class="form-group">
+            <label class="control-label  " >Order ID:</label>
+            <asp:TextBox ID="lblOrderID" CssClass="control-label txt1"  runat="server"></asp:TextBox>
+       </div>
+        <div class="form-group">
+               
+            <label class="control-label" > Customer Name:</label>
+                <asp:DropDownList ID="DDLCus"  CssClass="form-control  txt2" runat="server" 
                     DataSourceID="CusnameOfOrder" DataTextField="companyname" 
                     DataValueField="custid">
                     <asp:ListItem>Choose name</asp:ListItem>
@@ -25,15 +20,15 @@
                     ConnectionString="<%$ ConnectionStrings:TSQLFundamentals2008ConnectionString %>" 
                     SelectCommand="SELECT custid, companyname FROM Sales.Customers">
                 </asp:SqlDataSource>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Employee Name:
-            </td>
-            <td>
+       </div>
+        
+       
+        <div class="form-group">
+               
+            <label class="control-label" >Employee Name:</label>
+       
 
-                <asp:DropDownList ID="DDLEmp" runat="server" 
+                <asp:DropDownList ID="DDLEmp" CssClass="form-control  txt3" runat="server" 
                     DataSourceID="EmpnameOfOrder" DataTextField="fullname" 
                     DataValueField="empid">
                     <asp:ListItem>Choose name</asp:ListItem>
@@ -42,16 +37,12 @@
                     ConnectionString="<%$ ConnectionStrings:TSQLFundamentals2008ConnectionString %>" 
                     SelectCommand="SELECT empid, lastname +' '+ firstname as fullname FROM HR.Employees">
                 </asp:SqlDataSource>
-
-            </td>
-        </tr>
+        </div>
         
-       <tr>
-            <td>
-                Order Date:</td>
-            <td>
-
-                <asp:TextBox ID="txtOrderDate" runat="server"></asp:TextBox>
+         <div class="form-group">
+               
+            <label class="control-label" >Order Date:</label>
+                <asp:TextBox ID="txtOrderDate" CssClass="form-control  txt4" runat="server"></asp:TextBox>
 
         
                 <ajaxToolkit:CalendarExtender ID="txtOrderDate_CalendarExtender" runat="server" 
@@ -59,30 +50,22 @@
                 </ajaxToolkit:CalendarExtender>
                 <asp:RequiredFieldValidator ID="RFVOrderDate" runat="server" 
                     ControlToValidate="txtOrderDate" ErrorMessage="Enter order date"></asp:RequiredFieldValidator>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Require Date:</td>
-            <td>
-
-                <asp:TextBox ID="txtRequireDate" runat="server"></asp:TextBox>
+            </div>
+        <div class="form-group">
+               
+            <label class="control-label" > Require Date:</label>
+                <asp:TextBox ID="txtRequireDate" CssClass="form-control  txt5"  runat="server"></asp:TextBox>
 
                 <ajaxToolkit:CalendarExtender ID="txtRequireDate_CalendarExtender" 
                     runat="server" Enabled="True" TargetControlID="txtRequireDate">
                 </ajaxToolkit:CalendarExtender>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                     ControlToValidate="txtRequireDate" ErrorMessage="Enter require date"></asp:RequiredFieldValidator>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Shipped Date:</td>
-            <td>
-
-                <asp:TextBox ID="txtShippedDate" runat="server"></asp:TextBox>
+        </div>
+           <div class="form-group">
+               
+            <label class="control-label" > Shipped Date:</label>
+                <asp:TextBox ID="txtShippedDate"  CssClass="form-control  txt6" runat="server"></asp:TextBox>
 
                 <ajaxToolkit:CalendarExtender ID="txtShippedDate_CalendarExtender" 
                     runat="server" Enabled="True" TargetControlID="txtShippedDate">
@@ -90,14 +73,11 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                     ControlToValidate="txtShippedDate" ErrorMessage="Enter shipped date"></asp:RequiredFieldValidator>
 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Shipper Name:</td>
-            <td>
-
-                <asp:DropDownList ID="DDLShippername" runat="server" 
+           </div>
+         <div class="form-group">
+               
+            <label class="control-label" > Shipper Name:</label>
+                <asp:DropDownList ID="DDLShippername" CssClass="form-control  txt7"  runat="server" 
                 DataSourceID="Shippername" 
                 DataTextField="companyname" DataValueField="shipperid">
                 </asp:DropDownList>
@@ -105,16 +85,11 @@
                     ConnectionString="<%$ ConnectionStrings:TSQLFundamentals2008ConnectionString %>" 
                     SelectCommand="SELECT companyname,shipperid FROM Sales.Shippers">
                 </asp:SqlDataSource>
-
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Freight:</td>
-            <td>
-
-                <asp:TextBox ID="txtFreight" runat="server"></asp:TextBox>
+         </div>
+         <div class="form-group">
+               
+            <label class="control-label" >Freight:</label>
+                <asp:TextBox ID="txtFreight"  CssClass="form-control  txt8" runat="server"></asp:TextBox>
 
                 <ajaxToolkit:MaskedEditExtender ID="txtFreight_MaskedEditExtender" 
                     runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
@@ -124,101 +99,72 @@
                 </ajaxToolkit:MaskedEditExtender>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
                     ControlToValidate="txtFreight" ErrorMessage="Enter freight"></asp:RequiredFieldValidator>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Ship Name:</td>
-            <td>
-
-                <asp:TextBox ID="txtShipName" runat="server"></asp:TextBox>
+</div>
+       <div class="form-group">
+               
+            <label class="control-label" >Ship Name:</label>
+             <asp:TextBox ID="txtShipName"  CssClass="form-control  txt9" runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
                     ControlToValidate="txtShipName" ErrorMessage="Enter ship name"></asp:RequiredFieldValidator>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Ship Address:</td>
-            <td>
-
-                <asp:TextBox ID="txtShipAdd" runat="server"></asp:TextBox>
+</div>
+       <div class="form-group">
+               
+            <label class="control-label" >Ship Address:</label>
+                <asp:TextBox ID="txtShipAdd"  CssClass="form-control  txt9"  runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
                     ControlToValidate="txtShipAdd" ErrorMessage="Enter ship address"></asp:RequiredFieldValidator>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Ship City:</td>
-            <td>
-
-                <asp:TextBox ID="txtShipCity" runat="server"></asp:TextBox>
+</div>
+        <div class="form-group">
+               
+            <label class="control-label" >Ship City:</label>
+            
+                <asp:TextBox ID="txtShipCity" CssClass="form-control  txt10" runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
                     ControlToValidate="txtShipCity" ErrorMessage="Enter ship city"></asp:RequiredFieldValidator>
-
-            </td>
-        </tr>
-         <tr>
-            <td>
-                Ship Region:</td>
-            <td>
-
-                <asp:TextBox ID="txtShipRegion" runat="server"></asp:TextBox>
+</div>
+         <div class="form-group">
+            <label class="control-label" >Ship Region:</label>
+                <asp:TextBox ID="txtShipRegion" CssClass="form-control  txt11"  runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                     ControlToValidate="txtShipRegion" ErrorMessage="Enter ship region"></asp:RequiredFieldValidator>
-
-            </td>
-        </tr>  
-         <tr>
-            <td>
-                Ship Postal Code:</td>
-            <td>
-
-                <asp:TextBox ID="txtShipPostalCode" runat="server"></asp:TextBox>
+</div>
+          <div class="form-group">
+            <label class="control-label" >Ship Postal Code:</label>
+                <asp:TextBox ID="txtShipPostalCode" CssClass="form-control  txt12"  runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
                     ControlToValidate="txtShipPostalCode" ErrorMessage="Enter ship postal code"></asp:RequiredFieldValidator>
+</div>  
+         <div class="form-group">
+            <label class="control-label" >Ship Country:</label>
+         
+                <asp:TextBox ID="txtShipCountry" CssClass="form-control  txt13"  runat="server"></asp:TextBox>
 
-            </td>
-        </tr>   
-         <tr>
-            <td>
-                Ship Country:</td>
-            <td>
-
-                <asp:TextBox ID="txtShipCountry" runat="server"></asp:TextBox>
-
-            </td>
-        </tr>                                        
-    </table>
+        </div>    
+        <div>
+        <asp:Button  CssClass="btnCus"  ID="btnUpdate" runat="server" Text="Update" 
+            onclick="UpdateOrder_Click" />
+        <asp:Button  CssClass="btnCus"  ID="btnDelete" runat="server" Text="Delete" 
+            CausesValidation="False" onclick="DelteOrder_Click" />     
+            </div>                        
+    </div>
 </asp:Content>
 
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
     <div>
-        <td colspan="2">
-
-
-            <asp:Button ID="btnAdd" runat="server" Text="Add" onclick="AddOrder_Click" />
-        <asp:Button ID="btnUpdate" runat="server" Text="Update" 
-            onclick="UpdateOrder_Click" />
-        <asp:Button ID="btnDelete" runat="server" Text="Delete" 
-            CausesValidation="False" onclick="DelteOrder_Click" />
-        
-        <asp:Button ID="btnClear" runat="server" Text="Clear" onclick="Clear_Click" />
+        <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
+                       Text="Load" />
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-        <br />
-
-
-            <br />
-            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-        <asp:DropDownList ID="ddlSearch" runat="server">
+    </div>
+</asp:Content>
+<asp:Content id="Content2"  ContentPlaceHolderID="panelSearch" runat="server">
+<asp:TextBox ID="txtSearch" CssClass="searchFunc"  runat="server"></asp:TextBox>
+        <asp:DropDownList ID="ddlSearch" CssClass="searchFunc"  runat="server">
             <asp:ListItem>Customer Name</asp:ListItem>
             <asp:ListItem>Employee Name</asp:ListItem>
             <asp:ListItem>Shipper Name</asp:ListItem>
@@ -231,16 +177,14 @@
             <asp:ListItem>Ship Country</asp:ListItem>
         </asp:DropDownList>
         <asp:Button ID="btnSearch" runat="server" Text="Search" 
-            onclick="btnSearchOrder_Click" CausesValidation="False" />
+           CssClass="btnCus"   onclick="btnSearchOrder_Click" CausesValidation="False" />
  
-        </td>
-    </div>
-</asp:Content>
+</asp:Content>    
 
 <asp:Content id="tableContent" ContentPlaceHolderID="panelTable" runat="server">
 
-    <asp:GridView ID="gvOrder" runat="server" AutoGenerateSelectButton="True" 
-        onselectedindexchanged="gvOrder_SelectedIndexChanged">
+    <asp:GridView ID="gvOrder" CssClass="table"  runat="server"
+     EditRowStyle-CssClass="editRow" OnRowDataBound="gvOrder_RowDataBound"  AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl">
     </asp:GridView>    
 </asp:Content>
 

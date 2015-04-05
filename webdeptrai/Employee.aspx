@@ -185,10 +185,8 @@
                     </asp:Content>         
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
 <div>
-             
                     <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
                        Text="Load" />
-                  
         </div>
 </asp:Content>
 

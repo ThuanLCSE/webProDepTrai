@@ -18,13 +18,29 @@ public partial class Order : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         LoadOrder();
+        gvOrder.RowDataBound += new GridViewRowEventHandler(gvOrder_RowDataBound);
+    }
+
+    protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            foreach (TableCell c in e.Row.Cells)
+                c.Attributes.Add("onclick", "return showModalOrd('" 
+                    +"fdfsd" + "','"  +
+                DDLCus.Items.FindByText(e.Row.Cells[1].Text.ToString()).Text+ "','"
+                + DDLEmp.Items.FindByText(e.Row.Cells[2].Text.ToString()).Text + "','" + DateTime.Parse(e.Row.Cells[3].Text).ToShortDateString() + "','" + DateTime.Parse(e.Row.Cells[4].Text).ToShortDateString() + "','" +
+                DateTime.Parse(e.Row.Cells[5].Text).ToShortDateString() + "','"
+                + e.Row.Cells[6].Text + "','" + e.Row.Cells[7].Text + "','"
+                + e.Row.Cells[8].Text + "','" + e.Row.Cells[9].Text + "','" + e.Row.Cells[10].Text + "','"
+                + e.Row.Cells[11].Text + "','" + e.Row.Cells[12].Text  + "');");
+        }
     }
 
     void LoadOrder()
     {
         
         System.Data.SqlClient.SqlDataReader dr = (new order()).select();
-        gvOrder.AutoGenerateSelectButton = true;
         //gvCategories.AllowPaging = true;
         gvOrder.DataSource = dr;
         gvOrder.DataBind();
