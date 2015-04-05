@@ -66,64 +66,49 @@ public partial class product1 : System.Web.UI.Page
 
     void UpdateProduct()
     {
-        List<String> list = new List<string>();
-        list.Add(this.txtProductName.Text);
-        list.Add(this.DropDownList3.SelectedItem.Value);
-        list.Add(this.DropDownList2.SelectedItem.Value);
-        list.Add(this.txtUnitPrice.Text);
-        list.Add(this.RadioButtonList1.SelectedItem.Text);
-        new products().update(Int32.Parse(lblProID.Text), list);
+      
     }
 
     void SearchProduct()
     {
+        List<String> list = new List<string>();
         if (ddlSearch.SelectedValue.ToString().Equals("Product Name"))
         {
-            List<String> list = new List<string>();
+            
             list.Add(txtSearch.Text);
             list.Add("");
             list.Add("");
             list.Add("");
             list.Add("");
-            SqlDataReader dr = new products().search(list);
-            GridView1.DataSource = null;
-            GridView1.DataSource = dr;
-            GridView1.DataBind();
+           
         }
         if (ddlSearch.SelectedValue.ToString().Equals("Supplier name"))
         {
-            
             string t =""+DropDownList3.Items.FindByText(txtSearch.Text).Value;
-            List<String> list = new List<string>();
+          
             list.Add("");
             list.Add(t);
             list.Add("");
             list.Add("");
             list.Add("");
-            SqlDataReader dr = new products().search(list);
-            GridView1.DataSource = null;
-            GridView1.DataSource = dr;
-            GridView1.DataBind();
+          
         }
         if (ddlSearch.SelectedValue.ToString().Equals("Category name"))
         {
             string t = "" + (DropDownList2.Items.FindByText(txtSearch.Text)).Value;
             txtProductName.Text = t;
-            List<String> list = new List<string>();
+           
             list.Add("");
 
             list.Add("");
             list.Add(t);
             list.Add("");
             list.Add("");
-            SqlDataReader dr = new products().search(list);
-            GridView1.DataSource = null;
-            GridView1.DataSource = dr;
-            GridView1.DataBind();
+            
         }
         if (ddlSearch.SelectedValue.ToString().Equals("Unit Price"))
         {
-            List<String> list = new List<string>();
+          
             list.Add("");
 
             list.Add("");
@@ -131,14 +116,11 @@ public partial class product1 : System.Web.UI.Page
             list.Add("");
             list.Add(txtSearch.Text);
             list.Add("");
-            SqlDataReader dr = new products().search(list);
-            GridView1.DataSource = null;
-            GridView1.DataSource = dr;
-            GridView1.DataBind();
+          
         }
         if (ddlSearch.SelectedValue.ToString().Equals("Discontinued"))
         {
-            List<String> list = new List<string>();
+         
             list.Add("");
 
             list.Add("");
@@ -147,11 +129,12 @@ public partial class product1 : System.Web.UI.Page
 
             list.Add("");
             list.Add(txtSearch.Text);
-            SqlDataReader dr = new products().search(list);
-            GridView1.DataSource = null;
-            GridView1.DataSource = dr;
-            GridView1.DataBind();
+         
         }
+        SqlDataReader dr = new products().search(list);
+        GridView1.DataSource = null;
+        GridView1.DataSource = dr;
+        GridView1.DataBind();
     }
 
     protected void AddCate_Click(object sender, EventArgs e)
@@ -170,26 +153,39 @@ public partial class product1 : System.Web.UI.Page
         RequiredFieldValidator2.Validate();
         RegularExpressionValidator1.Validate();
         RequiredFieldValidator3.Validate();
-        UpdateProduct();
+
+        List<String> list = new List<string>();
+        list.Add(this.txtProductName.Text);
+        list.Add(this.DropDownList3.SelectedItem.Value);
+        list.Add(this.DropDownList2.SelectedItem.Value);
+        list.Add(this.txtUnitPrice.Text);
+        list.Add(this.RadioButtonList1.SelectedItem.Text);
+
+        if (lblProID.Text.Equals(""))
+
+            new products().insert(list);
+
+        else
+            new products().update(Int32.Parse(lblProID.Text), list);
         LoadProduct();
     }
-    protected void deleteProduct()
-    {
-        new products().delete(Int32.Parse(lblProID.Text));
-    }
-
+  
     protected void DelteCate_Click(object sender, EventArgs e)
     {
         RequiredFieldValidator2.ValidationGroup = "txtProductName";
-        deleteProduct();
+        if (lblProID.Text != "")
+        {
+            new products().delete(Int32.Parse(lblProID.Text));
+      
+        }
+        else
+            Response.Write("<script language=\"javascript\">alert(\'Select before delete!!!\');</script>");
         LoadProduct();
     }
 
     protected void Clear_Click(object sender, EventArgs e)
     {
-        lblProID.Text = "";
-        txtUnitPrice.Text = "";
-        txtProductName.Text = "";
+      
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

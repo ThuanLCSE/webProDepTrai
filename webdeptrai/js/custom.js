@@ -45,6 +45,13 @@ function showModalCat(v1, v2, v3) {
     $(".txt3").val(v3);
     $("#editModal").modal();
 }
+function showModalShi(v1, v2, v3) {
+
+    $(".txt1").val(v1);
+    $(".txt2").val(v2);
+    $(".txt3").val(v3);
+    $("#editModal").modal();
+}
 function showModalPro(v1, v2, v3, v4, v5, v6) {
 
     $(".txt1").val(v1);

@@ -135,10 +135,10 @@ using System.Data;
                 param.Value = Int32.Parse(str[1]);
             cmd.Parameters.Add(param);
             param = new SqlParameter("@categoryid", SqlDbType.Int);
-            if (str[2].Equals("0"))
+            if (str[2].Equals("0") || str[2].Equals(""))
                 param.Value = DBNull.Value;
             else
-                param.Value = Int32.Parse(str[2]);
+            param.Value = Int32.Parse(str[2]);
             cmd.Parameters.Add(param);
             param = new SqlParameter("@unitprice", SqlDbType.Money);
             if (str[3].Equals(""))
@@ -150,9 +150,9 @@ using System.Data;
             param = new SqlParameter("@discontinued", SqlDbType.Bit);
             if (str[4].Equals(""))
                 param.Value = DBNull.Value;
-            else if (str[4].Equals("True"))
+            else if (str[4].Equals("True") || str[4].Equals("true"))
                 param.Value = true;
-            else if (str[4].Equals("False"))
+            else if (str[4].Equals("False") || str[4].Equals("false"))
                 param.Value = false;
             cmd.Parameters.Add(param);
             //

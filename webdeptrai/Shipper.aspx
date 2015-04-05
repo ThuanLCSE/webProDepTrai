@@ -5,24 +5,26 @@
     <div width="100%">
        <div class="form-group">
             <label class="control-label  " >Shipper ID:</label>
-            <asp:Label ID="lblShipperID" CssClass="control-label  " runat="server"></asp:Label>
+            <asp:TextBox ID="lblShipperID" CssClass="control-label txt1 " runat="server"></asp:TextBox>
        </div>
        <div class="form-group">
             <label class="control-label" >Company Name:</label>
-            <asp:TextBox CssClass="form-control" ID="txtCompanyName" runat="server" Width="200px"></asp:TextBox>
+            <asp:TextBox CssClass="form-control txt2" ID="txtCompanyName" runat="server" Width="200px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                     ErrorMessage="Enter Company Name" ControlToValidate="txtCompanyName"></asp:RequiredFieldValidator>
        </div>
        <div class="form-group">
             <label class="control-label" >Phone:</label>
-            <asp:TextBox CssClass="form-control" ID="txtPhone" runat="server" Width="200px"></asp:TextBox>
+            <asp:TextBox CssClass="form-control txt3" ID="txtPhone" runat="server" Width="200px"></asp:TextBox>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
-                    ErrorMessage="Enter number XXXX-XXX-XXX" 
-                    ValidationExpression="\d{4}-\d{3}-\d{3}" ControlToValidate="txtPhone"></asp:RegularExpressionValidator>
+                    ErrorMessage="Enter number XXXXXXXXXX" 
+                    ValidationExpression="\d{11}" ControlToValidate="txtPhone"></asp:RegularExpressionValidator>
        </div>
-       <div>
-            <asp:Button ID="btnUpdateShipper" runat="server" Text="Update" 
+       <div style=" text-align:center;">
+            <asp:Button ID="btnUpdateShipper" runat="server" CssClass="btnCus"  Text="Save" 
                     onclick="btnUpdateShipper_Click" />
+                     <asp:Button ID="btnDelteShipper" runat="server" Text="Delete" 
+                onclick="btnDelteShipper_Click" CssClass="btnCus"  CausesValidation="False" />
        </div>
     </div>
 </asp:Content>
@@ -34,17 +36,13 @@
                             <asp:ListItem>Company Name</asp:ListItem>
                             <asp:ListItem>Phone</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:Button ID="btnSearch" runat="server" CausesValidation="False" 
-                           Text="Search" />
+                        <asp:Button ID="btnSearch" CssClass="btnCus"  runat="server" CausesValidation="False" 
+                           Text="Search" onclick="btnSearchShipper_Click" />
                     </asp:Panel>
                     </asp:Content>  
                     
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
         <div>
-            <asp:Button ID="btnNew" OnClick="btnNew_Click" OnClientClick="showModal();" CssClass="btnCus" runat="server" Text="New" Width="65px" 
-                        />
-            <asp:Button CssClass="btnCus" ID="btnClearShipper" runat="server" Text="Clear" 
-                onclick="btnClearShipper_Click" CausesValidation="False" />
             <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
                Text="Load" onclick="btnLoad_Click" />        
         </div>
@@ -52,15 +50,12 @@
 
 <%--<asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
     <div>
-        <td colspan="2">
             <asp:Button ID="btnAddShipper" runat="server" Text="Add" 
                 onclick="btnAddShipper_Click" />
-            <asp:Button ID="btnDelteShipper" runat="server" Text="Delete" 
-                onclick="btnDelteShipper_Click" CausesValidation="False" />
-            <br />
+           
             <asp:Button ID="btnSearchShipper" runat="server" Text="Search" 
                 CausesValidation="False" onclick="btnSearchShipper_Click" />
-        </td>
+       
     </div>
 </asp:Content>--%>
 
@@ -68,7 +63,7 @@
 
 <asp:Content id="tableContent" ContentPlaceHolderID="panelTable" runat="server">
     <asp:GridView CssClass="table" ID="gvShipper" runat="server"  
-        onselectedindexchanged="gvShipper_SelectedIndexChanged" 
-        AutoGenerateSelectButton="True" EditRowStyle-CssClass="editRow" AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl">
+        OnRowDataBound="gvShipper_RowDataBound"
+        EditRowStyle-CssClass="editRow" AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl">
     </asp:GridView>
 </asp:Content>

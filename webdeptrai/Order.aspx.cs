@@ -78,49 +78,37 @@ public partial class Order : System.Web.UI.Page
 
     void SearchOrder()
     {
+        List<String> list = new List<string>();
         if (ddlSearch.SelectedValue.ToString().Equals("Product Name"))
         {
-            List<String> list = new List<string>();
             list.Add(txtSearch.Text);
             list.Add("");
             list.Add("");
             list.Add("");
             list.Add("");
-            SqlDataReader dr = new order().search(list);
-            gvOrder.DataSource = null;
-            gvOrder.DataSource = dr;
-            gvOrder.DataBind();
+          
         }
         if (ddlSearch.SelectedValue.ToString().Equals("Supplier id"))
         {
-            List<String> list = new List<string>();
             list.Add("");
             list.Add(txtSearch.Text);
             list.Add("");
             list.Add("");
             list.Add("");
-            SqlDataReader dr = new order().search(list);
-            gvOrder.DataSource = null;
-            gvOrder.DataSource = dr;
-            gvOrder.DataBind();
+         
         }
         if (ddlSearch.SelectedValue.ToString().Equals("Category id"))
         {
-            List<String> list = new List<string>();
             list.Add("");
 
             list.Add("");
             list.Add(txtSearch.Text);
             list.Add("");
             list.Add("");
-            SqlDataReader dr = new order().search(list);
-            gvOrder.DataSource = null;
-            gvOrder.DataSource = dr;
-            gvOrder.DataBind();
+          
         }
         if (ddlSearch.SelectedValue.ToString().Equals("Unit Price"))
         {
-            List<String> list = new List<string>();
             list.Add("");
 
             list.Add("");
@@ -128,14 +116,11 @@ public partial class Order : System.Web.UI.Page
             list.Add("");
             list.Add(txtSearch.Text);
             list.Add("");
-            SqlDataReader dr = new order().search(list);
-            gvOrder.DataSource = null;
-            gvOrder.DataSource = dr;
-            gvOrder.DataBind();
+           
         }
         if (ddlSearch.SelectedValue.ToString().Equals("Discontinued"))
         {
-            List<String> list = new List<string>();
+           
             list.Add("");
 
             list.Add("");
@@ -144,11 +129,12 @@ public partial class Order : System.Web.UI.Page
 
             list.Add("");
             list.Add(txtSearch.Text);
-            SqlDataReader dr = new order().search(list);
-            gvOrder.DataSource = null;
-            gvOrder.DataSource = dr;
-            gvOrder.DataBind();
+         
         }
+        SqlDataReader dr = new order().search(list);
+        gvOrder.DataSource = null;
+        gvOrder.DataSource = dr;
+        gvOrder.DataBind();
     }
 
 
@@ -280,9 +266,9 @@ public partial class Order : System.Web.UI.Page
             "Orders.orderid," +
             "Customers.companyname," +
             "Employees.lastname + ' ' + Employees.firstname as fullname ," +
-            "CONVERT(VARCHAR(10), Orders.orderdate, 101)," +
-            "CONVERT(VARCHAR(10), Orders.requireddate, 101)," +
-            "CONVERT(VARCHAR(10), Orders.shippeddate, 101)," +
+            " Orders.orderdate," +
+            "Orders.requireddate," +
+            "Orders.shippeddate," +
             "Shippers.companyname," +
             "Orders.freight," +
             "Orders.shipname," +
@@ -344,8 +330,6 @@ public partial class Order : System.Web.UI.Page
 
         gvOrder.DataSource = dt;
         gvOrder.DataBind();
-        if (dt.Rows.Count == 0)
-            gvOrder.Visible = false;
-        else gvOrder.Visible = true;
+        
     }
 }

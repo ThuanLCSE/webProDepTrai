@@ -18,6 +18,18 @@ public partial class Shipper : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         LoadShipper();
+        gvShipper.RowDataBound += new GridViewRowEventHandler(gvShipper_RowDataBound);
+    }
+
+    protected void gvShipper_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            foreach (TableCell c in e.Row.Cells)
+                c.Attributes.Add("onclick", "return showModalShi('" + e.Row.Cells[0].Text + "','" 
+                    + e.Row.Cells[1].Text + "','" +
+                e.Row.Cells[2].Text  + "');");
+        }
     }
 
     protected void gvShipper_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,7 +44,6 @@ public partial class Shipper : System.Web.UI.Page
     void LoadShipper()
     {
         SqlDataReader dr = (new Shipper1()).select();
-        gvShipper.AutoGenerateSelectButton = true;
         gvShipper.DataSource = dr;
         gvShipper.DataBind();
         dr.Close();
@@ -68,26 +79,24 @@ public partial class Shipper : System.Web.UI.Page
 
     void Search()
     {
+        List<String> list = new List<string>();
         if (ddlSearch.SelectedValue.ToString().Equals("Company Name"))
         {
-            List<String> list = new List<string>();
+            
             list.Add(txtSearch.Text);
             list.Add("");
-            SqlDataReader dr = new Shipper1().search(list);
-            gvShipper.DataSource = null;
-            gvShipper.DataSource = dr;
-            gvShipper.DataBind();
+           
         }
         else
         {
-            List<String> list = new List<string>();
             list.Add("");
             list.Add(txtSearch.Text);
-            SqlDataReader dr = new Shipper1().search(list);
-            gvShipper.DataSource = null;
-            gvShipper.DataSource = dr;
-            gvShipper.DataBind();
+          
         }
+        SqlDataReader dr = new Shipper1().search(list);
+        gvShipper.DataSource = null;
+        gvShipper.DataSource = dr;
+        gvShipper.DataBind();
     }
 
 
@@ -102,7 +111,22 @@ public partial class Shipper : System.Web.UI.Page
     //Cập nhật Shipper
     protected void btnUpdateShipper_Click(object sender, EventArgs e)
     {
-        UpdateShipper();
+       
+        List<String> list = new List<string>();
+        list.Add(this.txtCompanyName.Text);
+        list.Add(this.txtPhone.Text);
+        bool rs = false;
+
+        if (lblShipperID.Text != "")
+        {
+            rs = new Shipper1().update(Int32.Parse(lblShipperID.Text), list);
+
+        }
+        else
+            rs = new Shipper1().insert(list);
+        if (rs)
+            Response.Write("<script language=\"javascript\">alert(\'Successful\');</script>"); 
+       
         LoadShipper();
     }
 
@@ -121,7 +145,8 @@ public partial class Shipper : System.Web.UI.Page
 
     protected void btnSearchShipper_Click(object sender, EventArgs e)
     {
-
+        Search();
+        LoadShipper();
     }
     protected void btnNew_Click(object sender, EventArgs e)
     {
