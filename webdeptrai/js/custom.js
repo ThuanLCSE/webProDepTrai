@@ -20,7 +20,7 @@
 }
 function showModalCat(v1, v2, v3) {
 
-    $(".txt1").val(v1);
+    $(".txt1").text(v1);
     $(".txt2").val(v2);
     $(".txt3").val(v3);
     $("#editModal").modal();

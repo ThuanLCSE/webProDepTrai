@@ -4,11 +4,11 @@
     <div width="100%">
         <div class="form-group">
             <label class="control-label  " >Category ID:</label>
-            <asp:TextBox ID="lblCateID" CssClass="control-label txt1" Enabled="false" runat="server"></asp:TextBox>
+            <asp:Label ID="lblCateID" CssClass="control-label  txt1" Text="123" runat="server"></asp:Label>
        </div>
        <div class="form-group">
             <label class="control-label" >Category Name:</label>
-                <asp:TextBox ID="txtCategoryName" CssClass="control-label txt2" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txtCategoryName" CssClass="control-label txt2" runat="server" Width="200px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                         ErrorMessage="Enter Category Name" ControlToValidate="txtCategoryName"></asp:RequiredFieldValidator>
         </div>

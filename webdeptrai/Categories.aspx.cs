@@ -53,7 +53,7 @@ public partial class Categories : System.Web.UI.Page
         List<String> list = new List<string>();
         list.Add(this.txtCategoryName.Text);
         list.Add(this.txtDescription.Text);
-        int e= Int32.Parse(lblCateID.Text);
+        int e= Int32.Parse(this.lblCateID.Text);
         new Categori().update(e, list);
     }
 
