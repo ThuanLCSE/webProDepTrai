@@ -154,7 +154,8 @@
             
         </div>
         <div style=" text-align:center;">
-
+<asp:Button CssClass="btnCus"  ID="btnDel" runat="server" Text="Delete" Width="68px" 
+                      CausesValidation="true" />
          <asp:Button ID="btnSave" onclick="btnSave_Click"  CssClass="btnCus" runat="server" Text="Save" Width="63px" 
                       />
                       </div>
@@ -179,11 +180,9 @@
                     </asp:Content>         
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
 <div>
-<asp:Button ID="btnNew" OnClick="btnNew_Click" OnClientClick="showModal();" CssClass="btnCus" runat="server" Text="New" Width="65px" 
-                        />
+
                    
-                    <asp:Button CssClass="btnCus"  ID="btnReset" runat="server" Text="Reset" Width="68px" 
-                      CausesValidation="False" />
+                    
                     <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
                        Text="Load" />
                     

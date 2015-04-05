@@ -15,8 +15,9 @@
     $(".txt13").val(v13);
     $(".txt14").val(v14);
     $("#editModal").modal();
-
-
+}
+function showModal() {
+    $("#editModal").modal();
 }
 function showModalCat(v1, v2, v3) {
 
@@ -25,8 +26,6 @@ function showModalCat(v1, v2, v3) {
     $(".txt2").val(v2);
     $(".txt3").val(v3);
     $("#editModal").modal();
-
-
 }
 
 $('.searchFunc').click(function(e) {

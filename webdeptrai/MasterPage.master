@@ -64,7 +64,7 @@
           
         </asp:ContentPlaceHolder>
         </div>
-      <div  role="presentation" style="    width: 40px;" class="dropdown">
+      <div  role="presentation" style="   display: inline;  width: 40px;" class="dropdown">
         <button id="drop5" href="#" class="btnCus" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
           Search
         </button>
@@ -76,6 +76,9 @@
     
     </div>  
         </ul>
+        
+        <button ID="btnNew" type="button" onclick="showModal();" class="btnCus"  Width="65px" 
+                       >New</button>
       </div>
    
    

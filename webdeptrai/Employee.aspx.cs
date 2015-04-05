@@ -17,11 +17,20 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         LoadTable();
-
-        btnNew.Click += new EventHandler(btnNew_Click);
+        
+       // btnNew.Click += new EventHandler(btnNew_Click);
+        btnDel.Click += new EventHandler(btnDel_Click);
         btnSave.Click += new EventHandler(btnSave_Click);
         gridEmp.RowDataBound += new GridViewRowEventHandler(gridEmp_RowDataBound);
         gridEmp.SelectedIndexChanged += new EventHandler(gridEmp_SelectedIndexChanged);
+    }
+
+    void btnDel_Click(object sender, EventArgs e)
+    {
+        
+            new Shipper1().delete(Int32.Parse(lblID.Text));
+            LoadTable();
+       
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
@@ -31,8 +40,8 @@ public partial class _Default : System.Web.UI.Page
         list.Add(this.txtLastName.Text);
         list.Add(this.txtTitle.Text);
         list.Add(txtCourse.Text);
-        list.Add(DateTime.Parse(txtDateOfBirth.Text).ToShortDateString());
-        list.Add(DateTime.Parse(txtHireDate.Text).ToShortDateString());
+        list.Add(txtDateOfBirth.Text);
+        list.Add(txtHireDate.Text);
         list.Add(txtAddress.Text);
         list.Add(txtCity.Text);
         list.Add(txtRegion.Text);
@@ -41,13 +50,17 @@ public partial class _Default : System.Web.UI.Page
         list.Add(txtPhone.Text);
         list.Add(txtMgrid.Text);
 
-        new Categori().update(Int32.Parse(lblID.Text), list);
+        if (lblID.Text.Equals(""))
+
+            new Shipper1().insert(list);
+     
+        else
+        new employee().update(Int32.Parse(lblID.Text), list);
+
+        LoadTable();
     }
 
-    protected void btnNew_Click(object sender, EventArgs e)
-    {
-        
-    }
+  
 
     protected void gridEmp_SelectedIndexChanged(object sender, EventArgs e)
     {
