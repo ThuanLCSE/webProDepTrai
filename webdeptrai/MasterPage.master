@@ -26,9 +26,9 @@
         <li>
         <a class="showbox slideright"  href="Order.aspx"><span>Order</span></a> </li>
         <li>
-        <a class="showbox slideright" href="Product.aspx"><span>Product</span></a> </li>
+        <a class="showbox slideright" href="product1.aspx"><span>Product</span></a> </li>
         <li>
-        <a class="showbox slideright" href="Supplier.aspx"><span>Supplier</span></a> </li>
+        <a class="showbox slideright" href="supplier1.aspx"><span>Supplier</span></a> </li>
         <li>
         <a class="showbox slideright" href="Categories.aspx"><span>Categori</span></a> </li>
         <li>

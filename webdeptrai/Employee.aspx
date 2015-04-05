@@ -161,7 +161,7 @@
                       </div>
 </asp:Content>
            
-                     <asp:Content id="Content1" ContentPlaceHolderID="panelSearch" runat="server">
+    <asp:Content id="Content1" ContentPlaceHolderID="panelSearch" runat="server">
                     <asp:Panel ID="Panel1" runat="server">
                         <asp:TextBox ID="txtSearch" CssClass="searchFunc" runat="server"></asp:TextBox>
                         <asp:DropDownList ID="DDLSearch" CssClass="searchFunc" runat="server">
@@ -182,7 +182,7 @@
                         <asp:Button ID="btnSearch" CssClass="btnCus" runat="server" CausesValidation="False" 
                            Text="Search" />
                     </asp:Panel>
-                    </asp:Content>         
+    </asp:Content>         
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
 <div>
                     <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 

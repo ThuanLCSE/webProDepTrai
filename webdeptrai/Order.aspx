@@ -111,7 +111,7 @@
        <div class="form-group">
                
             <label class="control-label" >Ship Address:</label>
-                <asp:TextBox ID="txtShipAdd"  CssClass="form-control  txt9"  runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtShipAdd"  CssClass="form-control  txt10"  runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
                     ControlToValidate="txtShipAdd" ErrorMessage="Enter ship address"></asp:RequiredFieldValidator>
@@ -120,21 +120,21 @@
                
             <label class="control-label" >Ship City:</label>
             
-                <asp:TextBox ID="txtShipCity" CssClass="form-control  txt10" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtShipCity" CssClass="form-control  txt11" runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
                     ControlToValidate="txtShipCity" ErrorMessage="Enter ship city"></asp:RequiredFieldValidator>
 </div>
          <div class="form-group">
             <label class="control-label" >Ship Region:</label>
-                <asp:TextBox ID="txtShipRegion" CssClass="form-control  txt11"  runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtShipRegion" CssClass="form-control  txt12"  runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                     ControlToValidate="txtShipRegion" ErrorMessage="Enter ship region"></asp:RequiredFieldValidator>
 </div>
           <div class="form-group">
             <label class="control-label" >Ship Postal Code:</label>
-                <asp:TextBox ID="txtShipPostalCode" CssClass="form-control  txt12"  runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtShipPostalCode" CssClass="form-control  txt13"  runat="server"></asp:TextBox>
 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
                     ControlToValidate="txtShipPostalCode" ErrorMessage="Enter ship postal code"></asp:RequiredFieldValidator>
@@ -142,11 +142,11 @@
          <div class="form-group">
             <label class="control-label" >Ship Country:</label>
          
-                <asp:TextBox ID="txtShipCountry" CssClass="form-control  txt13"  runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtShipCountry" CssClass="form-control  txt14"  runat="server"></asp:TextBox>
 
         </div>    
-        <div>
-        <asp:Button  CssClass="btnCus"  ID="btnUpdate" runat="server" Text="Update" 
+        <div style=" text-align:center;">
+        <asp:Button  CssClass="btnCus"  ID="btnUpdate" runat="server" Text="Save" 
             onclick="UpdateOrder_Click" />
         <asp:Button  CssClass="btnCus"  ID="btnDelete" runat="server" Text="Delete" 
             CausesValidation="False" onclick="DelteOrder_Click" />     

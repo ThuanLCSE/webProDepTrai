@@ -19,21 +19,25 @@ public partial class Order : System.Web.UI.Page
     {
         LoadOrder();
         gvOrder.RowDataBound += new GridViewRowEventHandler(gvOrder_RowDataBound);
+        
     }
 
     protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
+          
             foreach (TableCell c in e.Row.Cells)
-                c.Attributes.Add("onclick", "return showModalOrd('" 
-                    +"fdfsd" + "','"  +
-                DDLCus.Items.FindByText(e.Row.Cells[1].Text.ToString()).Text+ "','"
-                + DDLEmp.Items.FindByText(e.Row.Cells[2].Text.ToString()).Text + "','" + DateTime.Parse(e.Row.Cells[3].Text).ToShortDateString() + "','" + DateTime.Parse(e.Row.Cells[4].Text).ToShortDateString() + "','" +
+                c.Attributes.Add("onclick", "return showModalOrd('"
+                    + e.Row.Cells[0].Text
+                   + "','" + e.Row.Cells[1].Text.ToString()
+                + "','"
+                + e.Row.Cells[2].Text.ToString()+ "','" + DateTime.Parse(e.Row.Cells[3].Text).ToShortDateString() + "','" + DateTime.Parse(e.Row.Cells[4].Text).ToShortDateString() + "','" +
                 DateTime.Parse(e.Row.Cells[5].Text).ToShortDateString() + "','"
                 + e.Row.Cells[6].Text + "','" + e.Row.Cells[7].Text + "','"
                 + e.Row.Cells[8].Text + "','" + e.Row.Cells[9].Text + "','" + e.Row.Cells[10].Text + "','"
-                + e.Row.Cells[11].Text + "','" + e.Row.Cells[12].Text  + "');");
+                + e.Row.Cells[11].Text + "','" + e.Row.Cells[12].Text +"','" + e.Row.Cells[13].Text 
+                + "');");
         }
     }
 
@@ -44,26 +48,10 @@ public partial class Order : System.Web.UI.Page
         //gvCategories.AllowPaging = true;
         gvOrder.DataSource = dr;
         gvOrder.DataBind();
+        dr.Close();
     }
 
-    void AddOrder()
-    {
-        List<String> list = new List<string>();
-        list.Add(DDLCus.SelectedValue.ToString());
-        list.Add(DDLEmp.SelectedValue.ToString());
-        list.Add(txtOrderDate.Text);
-        list.Add(txtRequireDate.Text);
-        list.Add(txtShippedDate.Text);
-        list.Add(DDLShippername.SelectedValue.ToString());
-        list.Add(txtFreight.Text);
-        list.Add(txtShipName.Text);
-        list.Add(txtShipAdd.Text);
-        list.Add(txtShipCity.Text);
-        list.Add(txtShipRegion.Text);
-        list.Add(txtShipPostalCode.Text);
-        list.Add(txtShipCountry.Text);
-        new order().insert(list);
-    }
+  
 
     void UpdateOrder()
     {
@@ -163,21 +151,37 @@ public partial class Order : System.Web.UI.Page
         }
     }
 
-    protected void AddOrder_Click(object sender, EventArgs e)
-    {
-        AddOrder();
-        LoadOrder();
-    }
 
     protected void UpdateOrder_Click(object sender, EventArgs e)
     {
+        List<String> list = new List<string>();
+        //lblOrderID.Text = DDLCus.SelectedItem.Value;
+        list.Add(DDLCus.SelectedValue.ToString());
+        list.Add(DDLEmp.SelectedValue.ToString());
+        list.Add(txtOrderDate.Text);
+        list.Add(txtRequireDate.Text);
+        list.Add(txtShippedDate.Text);
+        //lblOrderID.Text = this.DDLShippername.SelectedValue.ToString();
+        list.Add(DDLShippername.SelectedValue.ToString());
+        list.Add(txtFreight.Text);
+        list.Add(txtShipName.Text);
+        list.Add(txtShipAdd.Text);
+        list.Add(txtShipCity.Text);
+        list.Add(txtShipRegion.Text);
+        list.Add(txtShipPostalCode.Text);
+        list.Add(txtShipCountry.Text);
+        bool rs=false;
+       
         if (lblOrderID.Text != "")
         {
-            UpdateOrder();
-            LoadOrder();
+            rs = new order().update(int.Parse(lblOrderID.Text), list);
+           
         }
-            else
-            Response.Write("<script language=\"javascript\">alert(\'select before update\');</script>");
+        else
+            rs = new order().insert( list);
+         if (rs)
+            Response.Write("<script language=\"javascript\">alert(\'Successful\');</script>"); 
+         LoadOrder();
     }
 
     protected void DelteOrder_Click(object sender, EventArgs e)
@@ -216,7 +220,7 @@ public partial class Order : System.Web.UI.Page
         lblOrderID.Text = r.Cells[1].Text.ToString();
         //
         DDLCus.ClearSelection();
-        this.DDLCus.Items.FindByText(r.Cells[2].Text.ToString()).Selected = true;
+        this.DDLCus.Items.FindByText(r.Cells[2].Text).Selected = true;
         //
         //
         DDLEmp.ClearSelection();

@@ -18,7 +18,7 @@
                 <asp:RequiredFieldValidator ID="equiredFieldValidator12" runat="server" 
                     ErrorMessage="Enter Category ID" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
         </div>
-        <div>
+        <div style=" text-align:center;">
             <asp:Button ID="btnUpdateCate" CssClass="btnCus" runat="server" Text="Save" 
             onclick="UpdateCate_Click" />
             <asp:Button CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
