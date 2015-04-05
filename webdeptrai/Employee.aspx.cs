@@ -17,8 +17,14 @@ public partial class _Default : System.Web.UI.Page
     {
         LoadTable();
         
+        
         gridEmp.RowDataBound += new GridViewRowEventHandler(gridEmp_RowDataBound);
+        gridEmp.SelectedIndexChanged += new EventHandler(gridEmp_SelectedIndexChanged);
+    }
 
+    protected void gridEmp_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        lblID.Text = gridEmp.SelectedRow.Cells[1].Text;
     }
 
  
@@ -27,8 +33,7 @@ public partial class _Default : System.Web.UI.Page
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
-            foreach (TableCell c in e.Row.Cells)
-            c.Attributes.Add("onclick", "return showModal();");
+            e.Row.Cells[0].Attributes.Add("onclick", "return showModal();");
         }
     }
     protected void LoadTable()

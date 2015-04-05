@@ -3,13 +3,13 @@
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
       <div width="100%">
             <div class="form-group">
-                <label class="control-label col-md-offset-2" >ID:</label>
+                <label class="control-label  " >ID:</label>
                 
-                    <asp:Label ID="lblID" CssClass="control-label col-md-offset-2" runat="server"></asp:Label>
+                    <asp:Label ID="lblID" CssClass="control-label  " runat="server"></asp:Label>
                 
            </div>
            <div class="form-group">
-                <label class="control-label col-md-offset-2" >Full name:</label>
+                <label class="control-label  " >Full name:</label>
                 
                 
                     <asp:TextBox CssClass="form-control" placeholder="Full name" ID="txtFullname" runat="server"></asp:TextBox>
@@ -20,7 +20,7 @@
                
             </div>
              <div class="form-group">
-                <label class="control-label col-md-offset-2" >Date of Birth:</label>
+                <label class="control-label  " >Date of Birth:</label>
                 
                 
                     <asp:TextBox  CssClass="form-control" ID="txtDateOfBirth" runat="server"></asp:TextBox>
@@ -32,7 +32,7 @@
                    
                </div>
               <div class="form-group">
-                <label class="control-label col-md-offset-2" >Gender:</label>
+                <label class="control-label  " >Gender:</label>
                 
                 <td>
                     <asp:RadioButtonList  ID="RBLGender" runat="server" RepeatDirection="Horizontal">
@@ -45,7 +45,7 @@
                 </td>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-offset-2" >National:</label>
+                <label class="control-label  " >National:</label>
                
                 
                     <asp:DropDownList ID="DDLNational" runat="server">
@@ -59,7 +59,7 @@
                         ErrorMessage="Please choose national" InitialValue="-1"></asp:RequiredFieldValidator>
                 </div>
                             <div class="form-group">
-                <label class="control-label col-md-offset-2" >Gender:</label>
+                <label class="control-label  " >Gender:</label>
                
                
                     <asp:TextBox CssClass="form-control" placeholder="01224402799" ID="txtPhone" runat="server"></asp:TextBox>
@@ -73,7 +73,7 @@
                         ValidationExpression="\d{4}-\d{4}-\d{4}" Display="Dynamic"></asp:RegularExpressionValidator>
                  </div>
             <div class="form-group">
-                <label class="control-label col-md-offset-2" >Qualification:</label>
+                <label class="control-label  " >Qualification:</label>
                 
                
                     <asp:DropDownList ID="ddlQualification" runat="server">
@@ -89,13 +89,13 @@
                
             </div>
              <div class="form-group">
-                <label class="control-label col-md-offset-2" >Address:</label>
+                <label class="control-label  " >Address:</label>
                 
                     <asp:TextBox ID="txtAddress" runat="server" Height="93px" 
                         TextMode="MultiLine" Width="241px"></asp:TextBox>
              </div>
             <div class="form-group">
-                <label class="control-label col-md-offset-2" >Salary:</label>
+                <label class="control-label  " >Salary:</label>
                 
                
                     <asp:TextBox CssClass="form-control" placeholder="Only Cash" ID="txtSalary" runat="server"></asp:TextBox>
@@ -149,6 +149,6 @@
 </asp:Content>
 
 <asp:Content id="tableContent" ContentPlaceHolderID="panelTable" runat="server">
-    <asp:GridView ID="gridEmp" OnRowDataBound="gridEmp_RowDataBound" CssClass="table" runat="server" RowStyle-CssClass="row" EditRowStyle-CssClass="editRow" AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl" SelectedRowStyle-CssClass="selectRow">
+    <asp:GridView ID="gridEmp" AutoGenerateSelectButton="true"  OnSelectedIndexChanged="gridEmp_SelectedIndexChanged" OnRowDataBound="gridEmp_RowDataBound" CssClass="table" runat="server" RowStyle-CssClass="row" EditRowStyle-CssClass="editRow" AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl">
     </asp:GridView>
 </asp:Content>
