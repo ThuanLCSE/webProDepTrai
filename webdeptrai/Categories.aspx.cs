@@ -54,7 +54,7 @@ public partial class Categories : System.Web.UI.Page
         list.Add(this.txtCategoryName.Text);
         list.Add(this.txtDescription.Text);
         int e= Int32.Parse(this.lblCateID.Text);
-        new Categori().update(e, list);
+        (new Categori()).update(e, list);
     }
 
     void SearchCategory()

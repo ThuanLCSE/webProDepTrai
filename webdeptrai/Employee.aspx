@@ -5,8 +5,7 @@
             <div class="form-group">
                 <label class="control-label  " >ID:</label>
                 
-                    <asp:Label ID="lblID" CssClass="control-label txt1" runat="server"></asp:Label>
-                
+                    <asp:TextBox ID="lblID"  CssClass="control-label txt1" runat="server"></asp:TextBox>
            </div>
            <div class="form-group">
                 <label class="control-label  " >First name:</label>

@@ -27,25 +27,32 @@ public partial class _Default : System.Web.UI.Page
     protected void btnSave_Click(object sender, EventArgs e)
     {
         List<String> list = new List<string>();
-        //list.Add(this.txtCategoryName.Text);
-        //list.Add(this.txtDescription.Text);
-        //new Categori().update(Int32.Parse(lblCateID.Text), list);
+        list.Add(this.txtFirstname.Text);
+        list.Add(this.txtLastName.Text);
+        list.Add(this.txtTitle.Text);
+        list.Add(txtCourse.Text);
+        list.Add(DateTime.Parse(txtDateOfBirth.Text).ToShortDateString());
+        list.Add(DateTime.Parse(txtHireDate.Text).ToShortDateString());
+        list.Add(txtAddress.Text);
+        list.Add(txtCity.Text);
+        list.Add(txtRegion.Text);
+        list.Add(TxtPost.Text);
+        list.Add(txtCoun.Text);
+        list.Add(txtPhone.Text);
+        list.Add(txtMgrid.Text);
+
+        new Categori().update(Int32.Parse(lblID.Text), list);
     }
 
     protected void btnNew_Click(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        
     }
 
     protected void gridEmp_SelectedIndexChanged(object sender, EventArgs e)
     {
         
-        lblID.Text = gridEmp.SelectedRow.Cells[1].Text;
-        txtFirstname.Text = gridEmp.SelectedRow.Cells[2].Text;
-        txtLastName.Text= gridEmp.SelectedRow.Cells[3].Text;
-        txtTitle.Text= gridEmp.SelectedRow.Cells[4].Text;
-        txtCourse.Text= gridEmp.SelectedRow.Cells[5].Text;
-        txtDateOfBirth.Text = gridEmp.SelectedRow.Cells[6].Text;
+       
        
     }
 
@@ -58,7 +65,8 @@ public partial class _Default : System.Web.UI.Page
             foreach (TableCell c in e.Row.Cells)
                 c.Attributes.Add("onclick", "return showModalEmp('" + e.Row.Cells[0].Text + "','" + e.Row.Cells[1].Text + "','" +
                 e.Row.Cells[2].Text + "','" + e.Row.Cells[3].Text + "','" + e.Row.Cells[4].Text + "','" +
-                e.Row.Cells[5].Text + "','" + e.Row.Cells[6].Text + "','" + e.Row.Cells[7].Text+"','"
+                DateTime.Parse( e.Row.Cells[5].Text).ToShortDateString() + "','" 
+                +DateTime.Parse( e.Row.Cells[6].Text).ToShortDateString() + "','" + e.Row.Cells[7].Text+"','"
                 + e.Row.Cells[8].Text + "','" + e.Row.Cells[9].Text + "','" + e.Row.Cells[10].Text + "','"
                 + e.Row.Cells[11].Text + "','" + e.Row.Cells[12].Text + "','" + e.Row.Cells[13].Text + "','"
                 +"');");

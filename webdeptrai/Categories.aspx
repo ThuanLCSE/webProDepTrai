@@ -4,7 +4,7 @@
     <div width="100%">
         <div class="form-group">
             <label class="control-label  " >Category ID:</label>
-            <asp:Label ID="lblCateID" CssClass="control-label  txt1" Text="123" runat="server"></asp:Label>
+            <asp:TextBox ID="lblCateID" CssClass="control-label  txt1"  runat="server"></asp:TextBox>
        </div>
        <div class="form-group">
             <label class="control-label" >Category Name:</label>
@@ -21,6 +21,8 @@
         <div>
             <asp:Button ID="btnUpdateCate" CssClass="btnCus" runat="server" Text="Save" 
             onclick="UpdateCate_Click" />
+            <asp:Button CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
+            onclick="DelteCate_Click" CausesValidation="False" />
         </div>
      </div>   
 </asp:Content>
@@ -41,8 +43,7 @@
     <div>
         <asp:Button  ID="btnNew"  OnClientClick="showModalCat();" CssClass="btnCus" runat="server" Text="New" Width="65px" 
                         />
-        <asp:Button CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
-            onclick="DelteCate_Click" CausesValidation="False" />
+        
         <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
             Text="Load" onclick="btnLoad_Click" />
     </div>
