@@ -42,10 +42,8 @@ public partial class Categories : System.Web.UI.Page
 
     void AddCategory()
     {
-        List<String> list = new List<string>();
-        list.Add(this.txtCategoryName.Text);
-        list.Add(this.txtDescription.Text);
-        new Categori().insert(list);
+        
+       
     }
 
     void UpdateCategory()
@@ -53,39 +51,34 @@ public partial class Categories : System.Web.UI.Page
         List<String> list = new List<string>();
         list.Add(this.txtCategoryName.Text);
         list.Add(this.txtDescription.Text);
-        int e= Int32.Parse(this.lblCateID.Text);
-        (new Categori()).update(e, list);
+        if (lblCateID.Text.Equals("")) 
+        
+        new Categori().insert(list);
+        else
+            (new Categori()).update(Int32.Parse(this.lblCateID.Text), list);
+        
     }
 
     void SearchCategory()
     {
+        List<String> list = new List<string>();
         if (ddlSearch.SelectedValue.ToString().Equals("Category Name"))
         {
-            List<String> list = new List<string>();
             list.Add(txtSearch.Text);
             list.Add("");
-            SqlDataReader dr = new Categori().search(list);
-            gvCategories.DataSource = null;
-            gvCategories.DataSource = dr;
-            gvCategories.DataBind();
         }
         else
         {
-            List<String> list = new List<string>();
             list.Add("");
             list.Add(txtSearch.Text);
-            SqlDataReader dr = new Categori().search(list);
-            gvCategories.DataSource = null;
-            gvCategories.DataSource = dr;
-            gvCategories.DataBind();
         }
+        SqlDataReader dr = new Categori().search(list);
+        gvCategories.DataSource = null;
+        gvCategories.DataSource = dr;
+        gvCategories.DataBind();
     }
 
-    protected void AddCate_Click(object sender, EventArgs e)
-    {
-        AddCategory();
-        LoadCategories();
-    }
+   
 
     protected void UpdateCate_Click(object sender, EventArgs e)
     {

@@ -91,6 +91,10 @@
   font-weight: 100;
 
 	 }
+.open > .dropdown-menu
+{
+	  display: inline-table;
+}
 .headTbl {
 	 	background: #8b8b8b;
 	 	color: #fff;

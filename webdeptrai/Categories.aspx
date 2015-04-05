@@ -34,16 +34,13 @@
                             <asp:ListItem>Category Name</asp:ListItem>
                             <asp:ListItem>Description</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:Button ID="btnSearchCate" runat="server" Text="Search" 
+                        <asp:Button ID="btnSearchCate" CssClass="btnCus"  runat="server" Text="Search" 
                         CausesValidation="False" onclick="btnSearchCate_Click" />
                     </asp:Panel>
                     </asp:Content>  
 
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
     <div>
-        <asp:Button  ID="btnNew"  OnClientClick="showModalCat();" CssClass="btnCus" runat="server" Text="New" Width="65px" 
-                        />
-        
         <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
             Text="Load" onclick="btnLoad_Click" />
     </div>

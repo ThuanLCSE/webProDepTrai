@@ -21,8 +21,208 @@ public partial class _Default : System.Web.UI.Page
        // btnNew.Click += new EventHandler(btnNew_Click);
         btnDel.Click += new EventHandler(btnDel_Click);
         btnSave.Click += new EventHandler(btnSave_Click);
+        btnSearch.Click += new EventHandler(btnSearch_Click);
         gridEmp.RowDataBound += new GridViewRowEventHandler(gridEmp_RowDataBound);
         gridEmp.SelectedIndexChanged += new EventHandler(gridEmp_SelectedIndexChanged);
+    }
+
+    void btnSearch_Click(object sender, EventArgs e)
+    {
+        List<String> list = new List<string>();
+        if (DDLSearch.SelectedValue.ToString().Equals("Last Name"))
+        {
+            list.Add(txtSearch.Text);
+            list.Add("");
+         
+        }
+        else if (DDLSearch.SelectedValue.ToString().Equals("First Name"))
+            {
+                list.Add("");
+                list.Add(txtSearch.Text);
+               
+            }
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Title"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Title of Courtesy"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Birthdate"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Hire Date"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Address"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("City"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Region"))
+        //{
+        //    list.Add("");
+            
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Postal Code"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Country"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Phone"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //    list.Add("");
+        //}
+        //else if (DDLSearch.SelectedValue.ToString().Equals("Manage ID"))
+        //{
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add("");
+        //    list.Add(txtSearch.Text);
+        //}
+
+        SqlDataReader dr = new employee().search(list);
+        gridEmp.DataSource = null;
+        gridEmp.DataSource = dr;
+        gridEmp.DataBind();
     }
 
     void btnDel_Click(object sender, EventArgs e)
@@ -52,7 +252,7 @@ public partial class _Default : System.Web.UI.Page
 
         if (lblID.Text.Equals(""))
 
-            new Shipper1().insert(list);
+            new employee().insert(list);
      
         else
         new employee().update(Int32.Parse(lblID.Text), list);

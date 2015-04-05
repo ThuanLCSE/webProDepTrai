@@ -156,7 +156,7 @@
         <div style=" text-align:center;">
 <asp:Button CssClass="btnCus"  ID="btnDel" runat="server" Text="Delete" Width="68px" 
                       CausesValidation="true" />
-         <asp:Button ID="btnSave" onclick="btnSave_Click"  CssClass="btnCus" runat="server" Text="Save" Width="63px" 
+         <asp:Button ID="btnSave"   CssClass="btnCus" runat="server" Text="Save" Width="63px" 
                       />
                       </div>
 </asp:Content>
@@ -165,30 +165,30 @@
                     <asp:Panel ID="Panel1" runat="server">
                         <asp:TextBox ID="txtSearch" CssClass="searchFunc" runat="server"></asp:TextBox>
                         <asp:DropDownList ID="DDLSearch" CssClass="searchFunc" runat="server">
-                            <asp:ListItem>FullName</asp:ListItem>
-                            <asp:ListItem>DateOfBirth</asp:ListItem>
-                            <asp:ListItem>Gender</asp:ListItem>
-                            <asp:ListItem>National</asp:ListItem>
-                            <asp:ListItem>Phone</asp:ListItem>
+                            <asp:ListItem>Last Name</asp:ListItem>
+                            <asp:ListItem>First Name</asp:ListItem>
+                            <asp:ListItem>Title</asp:ListItem>
+                            <asp:ListItem>Title of Courtesy</asp:ListItem>
+                            <asp:ListItem>Birthdate</asp:ListItem>
+                            <asp:ListItem>Hire Date</asp:ListItem>
                             <asp:ListItem>Address</asp:ListItem>
-                            <asp:ListItem>Qualification</asp:ListItem>
-                            <asp:ListItem>Salary</asp:ListItem>
+                            <asp:ListItem>City</asp:ListItem>
+                            <asp:ListItem>Region</asp:ListItem>
+                            <asp:ListItem>Postal Code</asp:ListItem>
+                            <asp:ListItem>Country</asp:ListItem>
+                            <asp:ListItem>Phone</asp:ListItem>
+                            <asp:ListItem>Manage ID</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:Button ID="btnSearch" runat="server" CausesValidation="False" 
+                        <asp:Button ID="btnSearch" CssClass="btnCus" runat="server" CausesValidation="False" 
                            Text="Search" />
                     </asp:Panel>
                     </asp:Content>         
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
 <div>
-
-                   
-                    
+             
                     <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
                        Text="Load" />
-                    
-                   
-                    
-                    
+                  
         </div>
 </asp:Content>
 
