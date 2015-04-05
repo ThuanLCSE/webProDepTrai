@@ -17,22 +17,22 @@
         <nav class="menu">
         
         <li>
-            <a class="showbox slideright" href="Employee.aspx">Gioi thieu</a> 
+            <a class="showbox slideright" href="Default.aspx">Gioi thieu</a> 
         </li>
         <li>
-       <a class="showbox slideright" href="Employee.aspx"><span> Customer </span></a>  </li>
+       <a class="showbox slideright" href="Customer.aspx"><span> Customer </span></a>  </li>
         <li>
         <a class="showbox slideright" href="Employee.aspx"><span>Employee</span></a> </li>
         <li>
-        <a class="showbox slideright"  href="Employee.aspx"><span>Order</span></a> </li>
+        <a class="showbox slideright"  href="Order.aspx"><span>Order</span></a> </li>
         <li>
-        <a class="showbox slideright" href="Employee.aspx"><span>Product</span></a> </li>
+        <a class="showbox slideright" href="Product.aspx"><span>Product</span></a> </li>
         <li>
-        <a class="showbox slideright" href="Employee.aspx"><span>Supplier</span></a> </li>
+        <a class="showbox slideright" href="Supplier.aspx"><span>Supplier</span></a> </li>
         <li>
         <a class="showbox slideright" href="Categories.aspx"><span>Categori</span></a> </li>
         <li>
-        <a class="showbox slideright" href="Employee.aspx"><span>Shipper</span></a> 
+        <a class="showbox slideright" href="Shipper.aspx"><span>Shipper</span></a> 
         </li>
         
       </nav>

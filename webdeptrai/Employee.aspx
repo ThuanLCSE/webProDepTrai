@@ -5,14 +5,14 @@
             <div class="form-group">
                 <label class="control-label  " >ID:</label>
                 
-                    <asp:Label ID="lblID" CssClass="control-label  " runat="server"></asp:Label>
+                    <asp:Label ID="lblID" CssClass="control-label txt1" runat="server"></asp:Label>
                 
            </div>
            <div class="form-group">
                 <label class="control-label  " >First name:</label>
                 
                 
-                    <asp:TextBox CssClass="form-control" placeholder="First name" ID="txtFirstname" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control txt2" placeholder="First name"  ID="txtFirstname" runat="server"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullname"
                         ErrorMessage="required field." SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
@@ -23,7 +23,7 @@
                 <label class="control-label  " >Last name:</label>
                 
                 
-                    <asp:TextBox CssClass="form-control" placeholder="name" ID="txtLastName" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control txt3" placeholder="name" ID="txtLastName" runat="server"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullname"
                         ErrorMessage="required field." SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
@@ -34,7 +34,7 @@
                 <label class="control-label  " >Title:</label>
                 
                 
-                    <asp:TextBox CssClass="form-control" placeholder="Title" ID="txtTitle" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control txt4" placeholder="Title" ID="txtTitle" runat="server"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullname"
                         ErrorMessage="required field." SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
@@ -45,7 +45,7 @@
                 <label class="control-label  " >Course:</label>
                 
                 
-                    <asp:TextBox CssClass="form-control" ID="txtCourse" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control txt5" ID="txtCourse" runat="server"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullname"
                         ErrorMessage="required field." SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
@@ -56,7 +56,7 @@
                 <label class="control-label  " >Date of Birth:</label>
                 
                 
-                    <asp:TextBox  CssClass="form-control" ID="txtDateOfBirth" runat="server"></asp:TextBox>
+                    <asp:TextBox  CssClass="form-control txt6" ID="txtDateOfBirth" runat="server"></asp:TextBox>
                    <%-- <a href="#" onclick="cal.select(document.forms['form1'].txtDateOfBirth,'anchor1','dd/MM/yyyy'); return false;"
                         name="anchor1" id="anchor1">select</a>--%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
@@ -68,7 +68,7 @@
                 <label class="control-label  " >Hire Date:</label>
                 
                 
-                    <asp:TextBox  CssClass="form-control" ID="txtHireDate" runat="server"></asp:TextBox>
+                    <asp:TextBox  CssClass="form-control txt7" ID="txtHireDate" runat="server"></asp:TextBox>
                    <%-- <a href="#" onclick="cal.select(document.forms['form1'].txtDateOfBirth,'anchor1','dd/MM/yyyy'); return false;"
                         name="anchor1" id="anchor1">select</a>--%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
@@ -76,87 +76,87 @@
                         ErrorMessage="Please enter DOB"></asp:RequiredFieldValidator>
                    
                </div>
-             <%-- <div class="form-group">
-                <label class="control-label  " >Gender:</label>
+             
+           <div class="form-group">
+                <label class="control-label  " >Address:</label>
                 
-                <td>
-                    <asp:RadioButtonList  ID="RBLGender" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem   Text="Male" Value="M" />
-                        <asp:ListItem  Text="Female" Value="F" />
-                    </asp:RadioButtonList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
-                        ControlToValidate="RBLGender" Display="Dynamic" 
-                        ErrorMessage="Please check gender"></asp:RequiredFieldValidator>
-                </td>
-            </div>--%>
-           
-                            <div class="form-group">
-                <label class="control-label  " >Gender:</label>
-               
-               
-                    <asp:TextBox CssClass="form-control" placeholder="01224402799" ID="txtPhone" runat="server"></asp:TextBox>
-                   
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-                        ControlToValidate="txtPhone" Display="Dynamic" 
-                        ErrorMessage="Please enter phone number"></asp:RequiredFieldValidator>
-                   
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-                        ControlToValidate="txtPhone" ErrorMessage="Format phone is xxxx-xxxx-xxxx" 
-                        ValidationExpression="\d{4}-\d{4}-\d{4}" Display="Dynamic"></asp:RegularExpressionValidator>
-                 </div>
+                    <asp:TextBox ID="txtAddress" CssClass=" form-control txt8" runat="server" Height="93px" 
+                        TextMode="MultiLine" Width="141px"></asp:TextBox>
+             </div>
+                            
                   <div class="form-group">
                 <label class="control-label  " >City:</label>
                
                 
-                    <asp:DropDownList ID="DDLNational" runat="server">
-                        <asp:ListItem Text="Select a nation" Value="-1" Selected="True" />
-                        <asp:ListItem Text="Vietnam" Value="Vietnam" />
-                        <asp:ListItem Text="Japan" Value="Japan" />
-                        <asp:ListItem Text="Singapore" Value="Singapore" />
-                    </asp:DropDownList>
+                   <asp:TextBox CssClass="form-control txt9" ID="txtCity" runat="server"></asp:TextBox>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullname"
+                        ErrorMessage="required field." SetFocusOnError="True"></asp:RequiredFieldValidator>--%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
-                        ControlToValidate="DDLNational" Display="Dynamic" 
-                        ErrorMessage="Please choose national" InitialValue="-1"></asp:RequiredFieldValidator>
+                        ControlToValidate="txtCity" ErrorMessage="Please enter Full name"></asp:RequiredFieldValidator>
                 </div>
+            
+             
             <div class="form-group">
-                <label class="control-label  " >Qualification:</label>
+                <label class="control-label  " >Region:</label>
                 
                
-                    <asp:DropDownList ID="ddlQualification" runat="server">
-                        <asp:ListItem Value="-1">Select qualification</asp:ListItem>
-                        <asp:ListItem>Software Engineer</asp:ListItem>
-                        <asp:ListItem>Doctor</asp:ListItem>
-                        <asp:ListItem>IT Bachelor</asp:ListItem>
-                        <asp:ListItem>MBA</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
-                        ControlToValidate="ddlQualification" Display="Dynamic" 
-                        ErrorMessage="Please choose qualification" InitialValue="-1"></asp:RequiredFieldValidator>
-               
-            </div>
-             <div class="form-group">
-                <label class="control-label  " >Address:</label>
-                
-                    <asp:TextBox ID="txtAddress" runat="server" Height="93px" 
-                        TextMode="MultiLine" Width="241px"></asp:TextBox>
-             </div>
-            <div class="form-group">
-                <label class="control-label  " >Salary:</label>
-                
-               
-                    <asp:TextBox CssClass="form-control" placeholder="Only Cash" ID="txtSalary" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control txt10"  ID="txtRegion" runat="server"></asp:TextBox>
                    <%-- <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtSalary"
                         ErrorMessage="Value must be integer" Operator="GreaterThan" Type="Integer" ValueToCompare="0"></asp:CompareValidator>--%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
-                        ControlToValidate="txtSalary" Display="Dynamic" 
+                        ControlToValidate="txtRegion" Display="Dynamic" 
                         ErrorMessage="Please enter salary"></asp:RequiredFieldValidator>
              </div>
-            
+             <div class="form-group">
+                <label class="control-label " >Postal Code:</label>
+                
+               
+                    <asp:TextBox CssClass="form-control txt11"  ID="TxtPost" runat="server"></asp:TextBox>
+                   <%-- <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtSalary"
+                        ErrorMessage="Value must be integer" Operator="GreaterThan" Type="Integer" ValueToCompare="0"></asp:CompareValidator>--%>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                        ControlToValidate="txtPost" Display="Dynamic" 
+                        ErrorMessage="Please enter postal code"></asp:RequiredFieldValidator>
+             </div>
+             <div class="form-group">
+                <label class="control-label " >Country:</label>
+                
+               
+                    <asp:TextBox CssClass="form-control txt12"  ID="txtCoun" runat="server"></asp:TextBox>
+                   <%-- <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtSalary"
+                        ErrorMessage="Value must be integer" Operator="GreaterThan" Type="Integer" ValueToCompare="0"></asp:CompareValidator>--%>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                        ControlToValidate="txtCoun" Display="Dynamic" 
+                        ErrorMessage="Please enter  country side"></asp:RequiredFieldValidator>
+             </div>
+             <div class="form-group">
+                <label class="control-label  " >Phone Number:</label>
+               
+               
+                    <asp:TextBox CssClass="form-control txt13 " placeholder="01224402799" ID="txtPhone" runat="server"></asp:TextBox>
+                   
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                        ControlToValidate="txtPhone" Display="Dynamic" 
+                        ErrorMessage="Please enter phone number"></asp:RequiredFieldValidator>
+                   
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                        ControlToValidate="txtPhone" ErrorMessage="Format phone is xxxxxxxxxxx (11)" 
+                        ValidationExpression="\d{11}" Display="Dynamic"></asp:RegularExpressionValidator>
+                 </div>
+            <div class="form-group">
+                <label class="control-label " >Manager ID:</label>
+                
+               
+                    <asp:TextBox CssClass="form-control txt14"  ID="txtMgrid" runat="server"></asp:TextBox>
+                   <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtMgrid"
+                        ErrorMessage="Value must be integer" Operator="GreaterThan" Type="Integer" ValueToCompare="0"></asp:CompareValidator>
+                    
+             </div>
             
         </div>
         <div style=" text-align:center;">
 
-         <asp:Button ID="btnSave" CssClass="btnCus" runat="server" Text="Save" Width="63px" 
+         <asp:Button ID="btnSave" onclick="btnSave_Click"  CssClass="btnCus" runat="server" Text="Save" Width="63px" 
                       />
                       </div>
 </asp:Content>
@@ -195,6 +195,6 @@
 </asp:Content>
 
 <asp:Content id="tableContent" ContentPlaceHolderID="panelTable" runat="server">
-    <asp:GridView ID="gridEmp" AutoGenerateSelectButton="true"  OnSelectedIndexChanged="gridEmp_SelectedIndexChanged" OnRowDataBound="gridEmp_RowDataBound" CssClass="table" runat="server" RowStyle-CssClass="row" EditRowStyle-CssClass="editRow" AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl" >
+    <asp:GridView ID="gridEmp"   OnSelectedIndexChanged="gridEmp_SelectedIndexChanged" OnRowDataBound="gridEmp_RowDataBound" CssClass="table" runat="server"  EditRowStyle-CssClass="editRow" AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl" >
     </asp:GridView>
 </asp:Content>

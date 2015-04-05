@@ -18,13 +18,23 @@ public partial class Categories : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         LoadCategories();
+        gvCategories.RowDataBound += new GridViewRowEventHandler(gridEmp_RowDataBound);
     }
-
+    protected void gridEmp_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            foreach (TableCell c in e.Row.Cells)
+                c.Attributes.Add("onclick", "return showModalCat('" + e.Row.Cells[0].Text + "','" +
+                    e.Row.Cells[1].Text + "','" + e.Row.Cells[2].Text + "');");
+        }
+    }
+   
     void LoadCategories()
     {
         
         System.Data.SqlClient.SqlDataReader dr = (new Categori()).select();
-        gvCategories.AutoGenerateSelectButton = true;
+        //gvCategories.AutoGenerateSelectButton = true;
         //gvCategories.AllowPaging = true;
         gvCategories.DataSource = dr;
         gvCategories.DataBind();
@@ -43,7 +53,8 @@ public partial class Categories : System.Web.UI.Page
         List<String> list = new List<string>();
         list.Add(this.txtCategoryName.Text);
         list.Add(this.txtDescription.Text);
-        new Categori().update(Int32.Parse(lblCateID.Text), list);
+        int e= Int32.Parse(lblCateID.Text);
+        new Categori().update(e, list);
     }
 
     void SearchCategory()
@@ -112,10 +123,7 @@ public partial class Categories : System.Web.UI.Page
     {
         SearchCategory();
     }
-    protected void btnNew_Click(object sender, EventArgs e)
-    {
-
-    }
+    
     protected void btnLoad_Click(object sender, EventArgs e)
     {
         LoadCategories();
