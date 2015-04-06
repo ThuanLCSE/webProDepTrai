@@ -104,7 +104,9 @@
                
             <label class="control-label" >Ship Name:</label>
              <asp:TextBox ID="txtShipName"  CssClass="form-control  txt9" runat="server"></asp:TextBox>
-
+ <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtShipName" ID="RegularExpressionValidator2" 
+               ValidationExpression = "^[\s\S]{2,40}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 40 characters allowed."></asp:RegularExpressionValidator>
+            
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
                     ControlToValidate="txtShipName" ErrorMessage="Enter ship name"></asp:RequiredFieldValidator>
 </div>
@@ -112,7 +114,9 @@
                
             <label class="control-label" >Ship Address:</label>
                 <asp:TextBox ID="txtShipAdd"  CssClass="form-control  txt10"  runat="server"></asp:TextBox>
-
+ <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtShipAdd" ID="RegularExpressionValidator1" 
+               ValidationExpression = "^[\s\S]{2,60}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 60 characters allowed."></asp:RegularExpressionValidator>
+            
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
                     ControlToValidate="txtShipAdd" ErrorMessage="Enter ship address"></asp:RequiredFieldValidator>
 </div>
@@ -121,28 +125,38 @@
             <label class="control-label" >Ship City:</label>
             
                 <asp:TextBox ID="txtShipCity" CssClass="form-control  txt11" runat="server"></asp:TextBox>
-
+                 <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtShipCity" ID="RegularExpressionValidator3" 
+               ValidationExpression = "^[\s\S]{2,15}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 15 characters allowed."></asp:RegularExpressionValidator>
+            
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
                     ControlToValidate="txtShipCity" ErrorMessage="Enter ship city"></asp:RequiredFieldValidator>
 </div>
          <div class="form-group">
             <label class="control-label" >Ship Region:</label>
                 <asp:TextBox ID="txtShipRegion" CssClass="form-control  txt12"  runat="server"></asp:TextBox>
-
+ <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtShipRegion" ID="RegularExpressionValidator4" 
+               ValidationExpression = "^[\s\S]{2,15}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 15 characters allowed."></asp:RegularExpressionValidator>
+            
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                     ControlToValidate="txtShipRegion" ErrorMessage="Enter ship region"></asp:RequiredFieldValidator>
 </div>
           <div class="form-group">
             <label class="control-label" >Ship Postal Code:</label>
                 <asp:TextBox ID="txtShipPostalCode" CssClass="form-control  txt13"  runat="server"></asp:TextBox>
-
+ <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtShipPostalCode" ID="RegularExpressionValidator5" 
+               ValidationExpression = "^[\s\S]{2,10}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 10 characters allowed."></asp:RegularExpressionValidator>
+            
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
                     ControlToValidate="txtShipPostalCode" ErrorMessage="Enter ship postal code"></asp:RequiredFieldValidator>
 </div>  
          <div class="form-group">
             <label class="control-label" >Ship Country:</label>
-         
+          
                 <asp:TextBox ID="txtShipCountry" CssClass="form-control  txt14"  runat="server"></asp:TextBox>
+ <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtShipCountry" ID="RegularExpressionValidator6" 
+               ValidationExpression = "^[\s\S]{2,15}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 15 characters allowed."></asp:RegularExpressionValidator>
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="txtShipCountry" ErrorMessage="Enter ship country"></asp:RequiredFieldValidator>
 
         </div>    
         <div style=" text-align:center;">
