@@ -40,7 +40,7 @@
          </asp:ContentPlaceHolder >
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content ">
+    <form class="modal-content ">
       <div class="modal-header">
         <label >Form </label>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -53,7 +53,7 @@
       </div>
       <div class="modal-footer">
        </div>
-    </div>
+    </form>
   </div>
 </div>
          
@@ -89,13 +89,13 @@
     
         
    
-    </form>
+   </form>
     <link href="css/bootstrap.css" rel="stylesheet"  type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <script src="js/jquery.js" type="text/javascript"></script>
     
     <script src="js/bootstrap.js" type="text/javascript"></script>
-
     <script src="js/custom.js" type="text/javascript"></script>
+
 </body>
 </html>

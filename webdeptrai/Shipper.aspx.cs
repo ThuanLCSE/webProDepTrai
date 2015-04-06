@@ -146,11 +146,10 @@ public partial class Shipper : System.Web.UI.Page
     protected void btnSearchShipper_Click(object sender, EventArgs e)
     {
         Search();
-        LoadShipper();
     }
     protected void btnNew_Click(object sender, EventArgs e)
     {
-
+       
     }
     protected void btnLoad_Click(object sender, EventArgs e)
     {

@@ -50,10 +50,13 @@ public partial class _Default : System.Web.UI.Page
 
     void btnDel_Click(object sender, EventArgs e)
     {
-        
+        if (lblID.Text != "")
+        {
             new Shipper1().delete(Int32.Parse(lblID.Text));
             LoadTable();
-       
+        }
+        else
+            Response.Write("<script language=\"javascript\">alert(\'Select before delete!!!\');</script>");
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
