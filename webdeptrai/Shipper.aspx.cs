@@ -26,9 +26,9 @@ public partial class Shipper : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             foreach (TableCell c in e.Row.Cells)
-                c.Attributes.Add("onclick", "return showModalShi('" + e.Row.Cells[0].Text + "','" 
-                    + e.Row.Cells[1].Text + "','" +
-                e.Row.Cells[2].Text  + "');");
+                c.Attributes.Add("onclick", "return showModalShi('" +Server.HtmlDecode( e.Row.Cells[0].Text) + "','" 
+                    + Server.HtmlDecode(e.Row.Cells[1].Text) + "','" +
+               Server.HtmlDecode( e.Row.Cells[2].Text)  + "');");
         }
     }
 

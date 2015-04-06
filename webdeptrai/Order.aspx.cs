@@ -19,7 +19,59 @@ public partial class Order : System.Web.UI.Page
     {
         LoadOrder();
         gvOrder.RowDataBound += new GridViewRowEventHandler(gvOrder_RowDataBound);
+        gvOrderDetail.RowDataBound += new GridViewRowEventHandler(gvOrderDetail_RowDataBound);
+        btnDeleteDetail.Click += new EventHandler(btnDeleteDetail_Click);
+        btnUpdateDetail.Click += new EventHandler(btnUpdateDetail2_Click);
+    }
+
+   
+    
+   protected void btnUpdateDetail2_Click(object sender, EventArgs e)
+    {
+            List<String> list = new List<string>();
+            list.Add(this.DDLProductname.SelectedValue.ToString());
+            list.Add(this.txtUnitDetail.Text);
+            list.Add(this.txtQuantilyDetail.Text);
+            list.Add(this.txtDiscountDetail.Text);
+
+            if (!lblOrderID.Text.Equals(""))
+            {
+
+                new orderDetail().update(int.Parse(lblOrderID.Text), list);
+            }
+            
+            System.Data.SqlClient.SqlDataReader dr = (new orderDetail()).searchByID(int.Parse(lblOrderID.Text));
+            gvOrderDetail.DataSource = dr;
+            gvOrderDetail.DataBind();
+            dr.Close();
         
+
+    }
+
+    protected void btnDeleteDetail_Click(object sender, EventArgs e)
+    {
+        if (lblOrderID.Text != "")
+        {
+            new orderDetail().delete(Int32.Parse(DDLProductname.SelectedValue.ToString()));
+
+        }
+        else
+            Response.Write("<script language=\"javascript\">alert(\'Select row before delete!!!\');</script>");
+    }
+
+    protected void gvOrderDetail_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+
+            foreach (TableCell c in e.Row.Cells)
+                c.Attributes.Add("onclick", "return showModalOrdDet('"
+                    + Server.HtmlDecode(e.Row.Cells[0].Text)
+                   + "','" + Server.HtmlDecode(e.Row.Cells[1].Text)
+                + "','" + Server.HtmlDecode(e.Row.Cells[2].Text) + "','" +
+               Server.HtmlDecode(e.Row.Cells[3].Text) + "','" + Server.HtmlDecode(e.Row.Cells[4].Text) + "','" +
+                 "');");
+        }
     }
 
     protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -29,18 +81,28 @@ public partial class Order : System.Web.UI.Page
           
             foreach (TableCell c in e.Row.Cells)
                 c.Attributes.Add("onclick", "return showModalOrd('"
-                    + e.Row.Cells[0].Text
-                   + "','" + e.Row.Cells[1].Text.ToString()
-                + "','"
-                + e.Row.Cells[2].Text.ToString()+ "','" + DateTime.Parse(e.Row.Cells[3].Text).ToShortDateString() + "','" + DateTime.Parse(e.Row.Cells[4].Text).ToShortDateString() + "','" +
+                    +Server.HtmlDecode( e.Row.Cells[0].Text)
+                   + "','" + Server.HtmlDecode(e.Row.Cells[1].Text)+ "','"
+                + Server.HtmlDecode(e.Row.Cells[2].Text) + "','" + DateTime.Parse(e.Row.Cells[3].Text).ToShortDateString() + "','" +
+                DateTime.Parse(e.Row.Cells[4].Text).ToShortDateString() + "','" +
                 DateTime.Parse(e.Row.Cells[5].Text).ToShortDateString() + "','"
-                + e.Row.Cells[6].Text + "','" + e.Row.Cells[7].Text + "','"
-                + e.Row.Cells[8].Text + "','" + e.Row.Cells[9].Text + "','" + e.Row.Cells[10].Text + "','"
-                + e.Row.Cells[11].Text + "','" + e.Row.Cells[12].Text +"','" + e.Row.Cells[13].Text 
-                + "');");
+                +Server.HtmlDecode( e.Row.Cells[6].Text) + "','" + Server.HtmlDecode(e.Row.Cells[7].Text) + "','"
+                + Server.HtmlDecode(e.Row.Cells[8].Text )+ "','" + Server.HtmlDecode(e.Row.Cells[9].Text) + "','" +
+                Server.HtmlDecode(e.Row.Cells[10].Text) + "','"  + Server.HtmlDecode(e.Row.Cells[11].Text) + "','" + 
+                Server.HtmlDecode(e.Row.Cells[12].Text) +"','" + Server.HtmlDecode(e.Row.Cells[13].Text ) + "');");
         }
     }
+    protected void LoadDetail(object sender, EventArgs e)
+    {
 
+        System.Data.SqlClient.SqlDataReader dr = (new orderDetail()).searchByID(int.Parse(lblOrderID.Text));
+        
+        gvOrderDetail.DataSource = dr;
+        gvOrderDetail.DataBind();
+        dr.Close();
+    }
+
+ 
     void LoadOrder()
     {
         
@@ -169,6 +231,7 @@ public partial class Order : System.Web.UI.Page
             Response.Write("<script language=\"javascript\">alert(\'Successful\');</script>"); 
          LoadOrder();
     }
+   
 
     protected void DelteOrder_Click(object sender, EventArgs e)
     {
@@ -200,34 +263,7 @@ public partial class Order : System.Web.UI.Page
         LoadOrder();
     }
 
-    protected void gvOrder_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        GridViewRow r = gvOrder.SelectedRow;
-        lblOrderID.Text = r.Cells[1].Text.ToString();
-        //
-        DDLCus.ClearSelection();
-        this.DDLCus.Items.FindByText(r.Cells[2].Text).Selected = true;
-        //
-        //
-        DDLEmp.ClearSelection();
-        this.DDLEmp.Items.FindByText(r.Cells[3].Text.ToString()).Selected = true;
-        //
-        txtOrderDate.Text = DateTime.Parse(r.Cells[4].Text).ToShortDateString();
-        txtRequireDate.Text = DateTime.Parse(r.Cells[5].Text).ToShortDateString();
-        txtShippedDate.Text = DateTime.Parse(r.Cells[6].Text).ToShortDateString();
-        //
-        DDLShippername.ClearSelection();
-        this.DDLShippername.Items.FindByText(r.Cells[7].Text.ToString()).Selected = true;
-        //
-        txtFreight.Text = r.Cells[8].Text.ToString();
-        txtShipName.Text = r.Cells[9].Text.ToString();
-        txtShipAdd.Text = r.Cells[10].Text.ToString();
-        txtShipCity.Text = r.Cells[1].Text.ToString();
-        txtShipRegion.Text = r.Cells[12].Text.ToString();
-        txtShipPostalCode.Text = r.Cells[13].Text.ToString();
-        txtShipCountry.Text = r.Cells[14].Text.ToString();
-
-    }
+   
 
     protected void btnSearchOrder_Click(object sender, EventArgs e)
     {

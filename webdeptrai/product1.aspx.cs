@@ -39,9 +39,10 @@ public partial class product1 : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             foreach (TableCell c in e.Row.Cells)
-                c.Attributes.Add("onclick", "return showModalPro('" + e.Row.Cells[0].Text + "','" + e.Row.Cells[1].Text + "','" +
-                e.Row.Cells[2].Text + "','" + e.Row.Cells[3].Text + "','" + e.Row.Cells[4].Text + "','" +
-                e.Row.Cells[5].Text  + "');");
+                c.Attributes.Add("onclick", "return showModalPro('" + Server.HtmlDecode(e.Row.Cells[0].Text) + "','" + Server.HtmlDecode(e.Row.Cells[1].Text)
+                + "','" +  Server.HtmlDecode(e.Row.Cells[2].Text) + "','" + Server.HtmlDecode(e.Row.Cells[3].Text) + "','" + 
+                Server.HtmlDecode(e.Row.Cells[4].Text) + "','" +
+                Server.HtmlDecode(e.Row.Cells[5].Text)  + "');");
         }
     }
     void LoadProduct()

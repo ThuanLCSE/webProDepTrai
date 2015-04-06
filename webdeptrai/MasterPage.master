@@ -38,11 +38,11 @@
       </nav>
       
          </asp:ContentPlaceHolder >
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form class="modal-content ">
+    <div class="modal-content ">
       <div class="modal-header">
-        <label >Form </label>
+        <label >Edit </label>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
        
       </div>
@@ -53,17 +53,33 @@
       </div>
       <div class="modal-footer">
        </div>
-    </form>
+    </div>
   </div>
 </div>
-         
-    
+<div class="modal fade" id="editModalDet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <label >Order Detail </label>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       
+      </div>
+      <div class="modal-body">
+             <asp:ContentPlaceHolder id="panelEditDet" runat="server">
+          
+                </asp:ContentPlaceHolder>
+      </div>
+      <div class="modal-footer">
+       </div>
+    </div>
+  </div>
+</div>
+
 <div>
 <div  style=" float: right;" >
   <asp:ContentPlaceHolder id="panelFunction" runat="server">
-          
         </asp:ContentPlaceHolder>
-        </div>
+</div>
       <div  role="presentation" style="   display: inline;  width: 40px;" class="dropdown">
         <button id="drop5" href="#" class="btnCus" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
           Search

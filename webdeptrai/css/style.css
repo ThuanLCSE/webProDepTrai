@@ -82,8 +82,8 @@
 }
 .table {
 		display: table;
-	 	
-	 	width: 100%; 
+	 	opacity: 0.5;
+	 	width: 30%; 
 	 	background: #fff;
 	 	margin: 0;
 	 	box-sizing: border-box;

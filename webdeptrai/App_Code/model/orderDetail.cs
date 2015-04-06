@@ -67,6 +67,7 @@ using System.Data;
             cmd.Parameters.Add(param);
             param = new SqlParameter("@discount", SqlDbType.Decimal);
             param.Value = decimal.Parse(str[3]);
+            cmd.Parameters.Add(param);
             //
             cmd.ExecuteNonQuery();
             closeConnection();

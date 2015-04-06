@@ -24,9 +24,13 @@ public partial class Customer : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             foreach (TableCell c in e.Row.Cells)
-                c.Attributes.Add("onclick", "return showModalCus('" + e.Row.Cells[0].Text + "','" + e.Row.Cells[1].Text + "','" +
-                e.Row.Cells[2].Text + "','" + e.Row.Cells[3].Text + "','" + e.Row.Cells[4].Text + "','" + e.Row.Cells[5].Text + "','" + e.Row.Cells[6].Text + "','" + e.Row.Cells[7].Text + "','" + e.Row.Cells[8].Text + "','" + e.Row.Cells[9].Text + "','" +
-                e.Row.Cells[10].Text + "');");
+                c.Attributes.Add("onclick", "return showModalCus('" + Server.HtmlDecode(e.Row.Cells[0].Text)
+                    + "','" + Server.HtmlDecode(e.Row.Cells[1].Text) + "','" +
+                Server.HtmlDecode(e.Row.Cells[2].Text) + "','" + Server.HtmlDecode(e.Row.Cells[3].Text) + "','" + 
+                Server.HtmlDecode(e.Row.Cells[4].Text) + "','" + Server.HtmlDecode(e.Row.Cells[5].Text) + "','" +
+                Server.HtmlDecode(e.Row.Cells[6].Text) + "','" + Server.HtmlDecode(e.Row.Cells[7].Text) + "','" + 
+                Server.HtmlDecode(e.Row.Cells[8].Text) + "','" + Server.HtmlDecode(e.Row.Cells[9].Text )+ "','" +
+                Server.HtmlDecode(e.Row.Cells[10].Text) + "');");
         }
     }
     private void LoadCustomer()

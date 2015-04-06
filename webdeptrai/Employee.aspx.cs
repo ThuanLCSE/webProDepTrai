@@ -102,12 +102,12 @@ public partial class _Default : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             foreach (TableCell c in e.Row.Cells)
-                c.Attributes.Add("onclick", "return showModalEmp('" + e.Row.Cells[0].Text + "','" + e.Row.Cells[1].Text + "','" +
-                e.Row.Cells[2].Text + "','" + e.Row.Cells[3].Text + "','" + e.Row.Cells[4].Text + "','" +
+                c.Attributes.Add("onclick", "return showModalEmp('" + Server.HtmlDecode(e.Row.Cells[0].Text) + "','" + Server.HtmlDecode(e.Row.Cells[1].Text) + "','" +
+                Server.HtmlDecode(e.Row.Cells[2].Text) + "','" + Server.HtmlDecode(e.Row.Cells[3].Text) + "','" + Server.HtmlDecode(e.Row.Cells[4].Text) + "','" +
                 DateTime.Parse( e.Row.Cells[5].Text).ToShortDateString() + "','" 
-                +DateTime.Parse( e.Row.Cells[6].Text).ToShortDateString() + "','" + e.Row.Cells[7].Text+"','"
-                + e.Row.Cells[8].Text + "','" + e.Row.Cells[9].Text + "','" + e.Row.Cells[10].Text + "','"
-                + e.Row.Cells[11].Text + "','" + e.Row.Cells[12].Text + "','" + e.Row.Cells[13].Text + "','"
+                +DateTime.Parse( e.Row.Cells[6].Text).ToShortDateString() + "','" + Server.HtmlDecode(e.Row.Cells[7].Text)+"','"
+                + Server.HtmlDecode(e.Row.Cells[8].Text) + "','" + Server.HtmlDecode(e.Row.Cells[9].Text) + "','" + Server.HtmlDecode(e.Row.Cells[10].Text) + "','"
+                + Server.HtmlDecode(e.Row.Cells[11].Text) + "','" + Server.HtmlDecode(e.Row.Cells[12].Text) + "','" + Server.HtmlDecode(e.Row.Cells[13].Text) + "','"
                 +"');");
         }
     }

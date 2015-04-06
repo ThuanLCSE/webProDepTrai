@@ -25,8 +25,8 @@ public partial class Categories : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             foreach (TableCell c in e.Row.Cells)
-                c.Attributes.Add("onclick", "return showModalCat('" + e.Row.Cells[0].Text + "','" +
-                    e.Row.Cells[1].Text + "','" + e.Row.Cells[2].Text + "');");
+                c.Attributes.Add("onclick", "return showModalCat('" + Server.HtmlDecode(e.Row.Cells[0].Text) + "','" +
+                  Server.HtmlDecode(  e.Row.Cells[1].Text )+ "','" + Server.HtmlDecode(e.Row.Cells[2].Text) + "');");
         }
     }
    

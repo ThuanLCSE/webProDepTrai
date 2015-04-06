@@ -152,16 +152,33 @@
          <div class="form-group">
             <label class="control-label" >Ship Country:</label>
           
-                <asp:TextBox ID="txtShipCountry" CssClass="form-control  txt14"  runat="server"></asp:TextBox>
- <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtShipCountry" ID="RegularExpressionValidator6" 
-               ValidationExpression = "^[\s\S]{2,15}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 15 characters allowed."></asp:RegularExpressionValidator>
+            <asp:DropDownList CssClass="form-control  txt14" ID="txtShipCountry" runat="server" >
+                    <asp:ListItem >Viet Nam</asp:ListItem>
+                    <asp:ListItem>Lao</asp:ListItem>
+                    <asp:ListItem>Indonesia</asp:ListItem>
+                    <asp:ListItem>Thai Lan</asp:ListItem>
+                    <asp:ListItem>Malaysia</asp:ListItem>
+                    <asp:ListItem>Singapore</asp:ListItem>
+                    <asp:ListItem>Japan</asp:ListItem>
+                    <asp:ListItem>Korea</asp:ListItem>
+                    <asp:ListItem>USA</asp:ListItem>
+                    <asp:ListItem>China</asp:ListItem>
+                </asp:DropDownList>
+
+
+          
+                <%--<asp:TextBox ID="txtShipCountry" CssClass="form-control  txt14"  runat="server"></asp:TextBox>--%>
+ <%--<asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtShipCountry" ID="RegularExpressionValidator6" 
+               ValidationExpression = "^[\s\S]{2,15}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 15 characters allowed."></asp:RegularExpressionValidator>--%>
            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                     ControlToValidate="txtShipCountry" ErrorMessage="Enter ship country"></asp:RequiredFieldValidator>
 
-        </div style=" text-align:center;">    
+        </div>    
         <div style=" text-align:center;">
         <asp:Button  CssClass="btnCus"  ID="btnUpdate" runat="server" Text="Save" 
             onclick="UpdateOrder_Click" />
+            <asp:Button  CssClass="btnCus"  ID="Button1" runat="server" Text="View Detail" 
+            onclick="LoadDetail" />
         <asp:Button  CssClass="btnCus"  ID="btnDelete" runat="server" Text="Delete" 
             CausesValidation="False" onclick="DelteOrder_Click" />     
             <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
@@ -170,6 +187,84 @@
                         OnClientCancel="alert('don't DO THAT again!');" />
             </div>                        
     </div>
+</asp:Content>
+<asp:Content id="in" ContentPlaceHolderID="panelEditDet" runat="server">
+    <div style="width: 100%" >
+                <div class="form-group">
+               
+            <label class="control-label" > Product name:</label>
+                        <asp:DropDownList ID="DDLProductname" CssClass="form-control txt2" runat="server" 
+                            DataSourceID="ProductnameOfDetail" DataTextField="productname" 
+                            DataValueField="productid">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="ProductnameOfDetail" runat="server" 
+                            ConnectionString="<%$ ConnectionStrings:TSQLFundamentals2008ConnectionString %>" 
+                            SelectCommand="SELECT [productid], [productname] FROM Production.Products">
+                        </asp:SqlDataSource>
+</div>
+                  <div class="form-group">
+               
+            <label class="control-label" >Unit price:</label>
+                        
+                    
+                        <asp:TextBox ID="txtUnitDetail" CssClass=" form-control txt3" runat="server"></asp:TextBox>
+                        <ajaxToolkit:MaskedEditExtender ID="txtUnitDetail_MaskedEditExtender" 
+                            runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                            CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                            CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                            Mask="99999" MaskType="Number" TargetControlID="txtUnitDetail">
+                        </ajaxToolkit:MaskedEditExtender>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtUnitDetail_FilteredTextBoxExtender" 
+                            runat="server" Enabled="True" FilterType="Numbers" InvalidChars="0" 
+                            TargetControlID="txtUnitDetail">
+                        </ajaxToolkit:FilteredTextBoxExtender>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" 
+                                                    ControlToValidate="txtUnitDetail" 
+                            ErrorMessage="Enter Unit price" Display="Dynamic" ValidationGroup="detail"></asp:RequiredFieldValidator>
+                    </div>
+                                      <div class="form-group">
+               
+            <label class="control-label" >Quantily:</label>
+                        
+                                    
+                                    <asp:TextBox ID="txtQuantilyDetail" CssClass="form-control txt4" runat="server"></asp:TextBox>
+                                    <ajaxToolkit:FilteredTextBoxExtender ID="txtQuantilyDetail_FilteredTextBoxExtender" 
+                                        runat="server" Enabled="True" FilterType="Numbers" 
+                                        TargetControlID="txtQuantilyDetail">
+                                    </ajaxToolkit:FilteredTextBoxExtender>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" 
+                                                    ControlToValidate="txtQuantilyDetail" 
+                                        ErrorMessage="Enter quantily" Display="Dynamic" ValidationGroup="detail"></asp:RequiredFieldValidator>
+                               </div>
+                               <div class="form-group">
+               
+            <label class="control-label" >Discount:</label>
+                                                <asp:TextBox ID="txtDiscountDetail" CssClass="form-control txt5" runat="server"></asp:TextBox>
+                                                <ajaxToolkit:MaskedEditExtender ID="txtDiscountDetail_MaskedEditExtender" 
+                                                    runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                                    CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                                    CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                                    TargetControlID="txtDiscountDetail" Mask="9.999" MaskType="Number">
+                                                </ajaxToolkit:MaskedEditExtender>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
+                                                    ControlToValidate="txtDiscountDetail" ErrorMessage="Enter discount " 
+                                                    Display="Dynamic" ValidationGroup="detail"></asp:RequiredFieldValidator>
+                                                <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                                                    ControlToValidate="txtDiscountDetail" ErrorMessage="Format 0.01 -&gt; 0.99" 
+                                                    MaximumValue="0.99" MinimumValue="0.01" Display="Dynamic" 
+                                                    ValidationGroup="detail"></asp:RangeValidator>
+                                           </div>
+            </div>
+        <div style=" text-align:center;">
+        <asp:Button  CssClass="btnCus"  ID="btnUpdateDetail" runat="server" Text="Save" 
+            onclick="btnUpdateDetail2_Click"  UseSubmitBehavior="False" />
+        <asp:Button  CssClass="btnCus"  ID="btnDeleteDetail" runat="server" Text="Delete" 
+            onclick="btnDeleteDetail_Click" UseSubmitBehavior="False" />     
+            <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender2" runat="server" 
+                        TargetControlID="btnDeleteDetail"
+                        ConfirmText="Are you sure you want Delete?" 
+                        OnClientCancel="cancel" />
+            </div>       
 </asp:Content>
 
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
@@ -204,6 +299,9 @@
     <asp:GridView ID="gvOrder" CssClass="table"  runat="server"
      EditRowStyle-CssClass="editRow" OnRowDataBound="gvOrder_RowDataBound"  AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl">
     </asp:GridView>    
+     <asp:GridView ID="gvOrderDetail" OnRowDataBound="gvOrderDetail_RowDataBound"
+     CssClass="table" runat="server" AlternatingRowStyle-CssClass="alterRow" EmptyDataRowStyle-CssClass="emptyRow" FooterStyle-CssClass="foot" HeaderStyle-CssClass="headTbl">
+    </asp:GridView> 
 </asp:Content>
 
 

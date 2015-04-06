@@ -126,14 +126,18 @@
              </div>
              <div class="form-group">
                 <label class="control-label " >Country:</label>
-                
-               
-                    <asp:TextBox CssClass="form-control txt12"  ID="txtCoun" runat="server"></asp:TextBox>
-                  <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txtCoun" ID="RegularExpressionValidator10" 
-               ValidationExpression = "^[\s\S]{2,15}$" runat="server" ErrorMessage="Minimum 2 characters! Maximum 15 characters allowed."></asp:RegularExpressionValidator>
-               <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
-                        ControlToValidate="txtCoun" Display="Dynamic" 
-                        ErrorMessage="Please enter  country side"></asp:RequiredFieldValidator>
+                 <asp:DropDownList CssClass="form-control  txt12" ID="txtCoun"  runat="server" >
+                    <asp:ListItem >Viet Nam</asp:ListItem>
+                    <asp:ListItem>Lao</asp:ListItem>
+                    <asp:ListItem>Indonesia</asp:ListItem>
+                    <asp:ListItem>Thai Lan</asp:ListItem>
+                    <asp:ListItem>Malaysia</asp:ListItem>
+                    <asp:ListItem>Singapore</asp:ListItem>
+                    <asp:ListItem>Japan</asp:ListItem>
+                    <asp:ListItem>Korea</asp:ListItem>
+                    <asp:ListItem>USA</asp:ListItem>
+                    <asp:ListItem>China</asp:ListItem>
+                </asp:DropDownList>
              </div>
              <div class="form-group">
                 <label class="control-label  " >Phone Number:</label>
@@ -167,7 +171,7 @@
                     <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
                         TargetControlID="btnDel"
                         ConfirmText="Are you sure you want Delete?" 
-                        OnClientCancel="cancel" />
+                        OnClientCancel="alert('don't DO THAT again!');" />
          <asp:Button ID="btnSave"   CssClass="btnCus" runat="server" Text="Save" Width="63px" 
                       />
                       </div>

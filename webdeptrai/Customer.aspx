@@ -11,7 +11,7 @@
         <div>
             
                     <label class="control-label  " >  Companyname:</label>
-                    <asp:TextBox CssClass="form-control txt2" ID="txtSupplierName" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control txt2" ID="txtSupplierName" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                     ErrorMessage="Enter Customer Name" ControlToValidate="txtSupplierName"></asp:RequiredFieldValidator>
                         
@@ -25,7 +25,7 @@
         <div>
                     
                     <label class="control-label  " >  Contact Name :</label>
-                    <asp:TextBox ID="txtContactName" CssClass="form-control txt3" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txtContactName" CssClass="form-control txt3" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                     ErrorMessage="Enter Contact Name" ControlToValidate="txtContactName"></asp:RequiredFieldValidator>
             
@@ -38,7 +38,7 @@
         <div>   
                     
                     <label class="control-label  " >  Contact tilte  :</label>
-                    <asp:TextBox ID="txtContactTilte" CssClass="form-control txt4" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txtContactTilte" CssClass="form-control txt4" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                     ErrorMessage="Enter Contact Tilte" ControlToValidate="txtContactTilte"></asp:RequiredFieldValidator>
                         
@@ -51,7 +51,7 @@
         <div>       
                     
                     <label class="control-label  " >  Address:</label>
-                    <asp:TextBox ID="txtAddress" CssClass="form-control txt5" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txtAddress" CssClass="form-control txt5" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                     ErrorMessage="Enter Address" ControlToValidate="txtAddress"></asp:RequiredFieldValidator>
                         
@@ -64,7 +64,7 @@
         </div>   
         <div>    
                     <label class="control-label  " >  City :</label>
-                    <asp:TextBox CssClass="form-control txt6" ID="txtCity" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control txt6" ID="txtCity" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
                     ErrorMessage="Enter City Name" ControlToValidate="txtCity"></asp:RequiredFieldValidator>
                         
@@ -77,7 +77,7 @@
         <div> 
                     
                     <label class="control-label  " > Region :</label>
-                    <asp:TextBox ID="txtRegion" CssClass="form-control txt7" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txtRegion" CssClass="form-control txt7" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
                     ErrorMessage="Enter Region" ControlToValidate="txtRegion"></asp:RequiredFieldValidator>
                         
@@ -90,7 +90,7 @@
         <div>    
                     
                     <label class="control-label  " > Postal Code :</label>
-                    <asp:TextBox CssClass="form-control txt8" ID="txtPostal" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control txt8" ID="txtPostal" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
                     ErrorMessage="Enter Postal Code" ControlToValidate="txtPostal"></asp:RequiredFieldValidator>
                         
@@ -102,19 +102,23 @@
          <div>  
                    
                     <label class="control-label  " >  Country :</label>
-                    <asp:TextBox ID="txtCountry" CssClass="form-control txt9" runat="server" Width="200px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
-                    ErrorMessage="Enter Country Name" ControlToValidate="txtCountry"></asp:RequiredFieldValidator>
-                        
-                        <asp:RegularExpressionValidator Display = "Dynamic" 
-                        ControlToValidate = "txtCountry" ID="RegularExpressionValidator9" ValidationExpression = "^[\s\S]{3,15}$" 
-                        runat="server" ErrorMessage="Minimum 3 characters, Maximum 8 characters allowed.">
-                        </asp:RegularExpressionValidator>
+                    <asp:DropDownList CssClass="form-control txt9" ID="txtCountry" runat="server" >
+                    <asp:ListItem >Viet Nam</asp:ListItem>
+                    <asp:ListItem>Lao</asp:ListItem>
+                    <asp:ListItem>Indonesia</asp:ListItem>
+                    <asp:ListItem>Thai Lan</asp:ListItem>
+                    <asp:ListItem>Malaysia</asp:ListItem>
+                    <asp:ListItem>Singapore</asp:ListItem>
+                    <asp:ListItem>Japan</asp:ListItem>
+                    <asp:ListItem>Korea</asp:ListItem>
+                    <asp:ListItem>USA</asp:ListItem>
+                    <asp:ListItem>China</asp:ListItem>
+                </asp:DropDownList>
                         
         </div>   
         <div>   
                     <label class="control-label  " >  Phone :</label>
-                    <asp:TextBox ID="txtPhone" CssClass="form-control txt10" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txtPhone" CssClass="form-control txt10" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                     ErrorMessage="Enter Phone number" ControlToValidate="txtPhone"></asp:RequiredFieldValidator>
                     
@@ -124,7 +128,7 @@
         </div>   
         <div>  
                     <label class="control-label  " >  Fax</label>
-                    <asp:TextBox ID="txtFax" CssClass="form-control txt11" runat="server" Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txtFax" CssClass="form-control txt11" runat="server"  ></asp:TextBox>
                     <asp:RequiredFieldValidator  ID="RequiredFieldValidator10" runat="server" 
                     ErrorMessage="Enter Fax" ControlToValidate="txtFax"></asp:RequiredFieldValidator>
                         

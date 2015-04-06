@@ -1,4 +1,10 @@
-﻿function showModalEmp(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14) {
+﻿
+    $(".table").animate({
+        width: "100%",
+        margin: "0",
+        opacity: 1,
+    }, 2000);
+function showModalEmp(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14) {
 
     $(".txt1").val(v1);
     $(".txt2").val(v2);
@@ -33,6 +39,16 @@ function showModalOrd(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,v14
     $(".txt13").val(v13);
     $(".txt14").val(v14);
     $("#editModal").modal();
+}
+function showModalOrdDet(v1, v2, v3, v4, v5) {
+
+    $(".txt1").val(v1);
+    $(".txt2").val(v2);
+    $(".txt3").val(v3);
+    $(".txt4").val(v4);
+    $(".txt5").val(v5);
+   
+    $("#editModalDet").modal();
 }
 function showModalSup(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11) {
 
@@ -96,6 +112,9 @@ function showModalPro(v1, v2, v3, v4, v5, v6) {
 }
 
 function calcel() {
-    alert('do\' not DO THAT again!');
+    alert('don\'t DO THAT again!');
 }
+$('.searchFunc').click(function(e) {
+    e.stopPropagation();
+});
 
