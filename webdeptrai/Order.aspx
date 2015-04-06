@@ -158,12 +158,16 @@
            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                     ControlToValidate="txtShipCountry" ErrorMessage="Enter ship country"></asp:RequiredFieldValidator>
 
-        </div>    
+        </div style=" text-align:center;">    
         <div style=" text-align:center;">
         <asp:Button  CssClass="btnCus"  ID="btnUpdate" runat="server" Text="Save" 
             onclick="UpdateOrder_Click" />
         <asp:Button  CssClass="btnCus"  ID="btnDelete" runat="server" Text="Delete" 
             CausesValidation="False" onclick="DelteOrder_Click" />     
+            <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
+                        TargetControlID="btnDelete"
+                        ConfirmText="Are you sure you want Delete?" 
+                        OnClientCancel="alert('don't DO THAT again!');" />
             </div>                        
     </div>
 </asp:Content>
