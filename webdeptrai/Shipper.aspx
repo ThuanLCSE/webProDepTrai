@@ -23,12 +23,35 @@
        </div>
        
        <div class="form-group">
+            <ajaxToolkit:ToolkitScriptManager runat="server" ID="ToolkitScriptManager1"  EnableScriptGlobalization="true" EnableScriptLocalization="true" />
             <label class="control-label" >Phone:</label>
             <asp:TextBox CssClass="form-control txt3" ID="txtPhone" runat="server" Width="200px"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+            <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
+                TargetControlID="txtPhone"
+                Mask="(999) 999-9999"
+                MessageValidatorTip="true"
+                OnFocusCssClass="MaskedEditFocus"
+                OnInvalidCssClass="MaskedEditError"
+                MaskType="Number"
+                ErrorTooltipEnabled="True" AutoComplete="False" 
+                InputDirection="RightToLeft" />
+            <ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator2" runat="server"
+                ControlExtender="MaskedEditExtender2"
+                ControlToValidate="txtPhone"
+                IsValidEmpty="False"
+                EmptyValueMessage="Number is required"
+                InvalidValueMessage="Number is invalid"
+                Display="Dynamic"
+                EmptyValueBlurredText="*"
+                InvalidValueBlurredMessage="*"
+                MaximumValueBlurredMessage="*"
+                MinimumValueBlurredText="*"
+                ValidationGroup="MKE" ValidationExpression="\d{10}" />
+            <br />
+            <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
             ErrorMessage="Enter number (123) 456-7890" 
             ValidationExpression="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$" 
-            ControlToValidate="txtPhone"></asp:RegularExpressionValidator>
+            ControlToValidate="txtPhone"></asp:RegularExpressionValidator>--%>
             
             
        </div>
@@ -64,8 +87,6 @@
             <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
                Text="Load" onclick="btnLoad_Click" />        
         </div>
-          <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
 </asp:Content>
 
 <%--<asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
