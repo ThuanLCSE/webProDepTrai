@@ -6,24 +6,43 @@
             <label class="control-label  " >Category ID:</label>
             <asp:TextBox ID="lblCateID" CssClass="control-label  txt1"  runat="server"></asp:TextBox>
        </div>
+       
        <div class="form-group">
             <label class="control-label" >Category Name:</label>
-                    <asp:TextBox ID="txtCategoryName" CssClass="control-label txt2" runat="server" Width="200px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                        ErrorMessage="Enter Category Name" ControlToValidate="txtCategoryName"></asp:RequiredFieldValidator>
-        </div>
+            <asp:TextBox ID="txtCategoryName" CssClass="control-label txt2" runat="server" Width="200px"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+            ErrorMessage="Enter Category Name" ControlToValidate="txtCategoryName"></asp:RequiredFieldValidator>
+            
+                       <asp:RegularExpressionValidator Display = "Dynamic" 
+                       ControlToValidate = "txtCategoryName" ID="RegularExpressionValidator7" 
+                       ValidationExpression = "^[\s\S]{3,15}$" 
+                       runat="server" ErrorMessage="Minimum 3 characters ,Maximum 15 characters allowed.">
+                       </asp:RegularExpressionValidator>
+            
+       </div>
+       
         <div class="form-group">
             <label class="control-label" >Description:</label>
-                <asp:TextBox ID="txtDescription" CssClass="control-label txt3" runat="server" Width="200px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="equiredFieldValidator12" runat="server" 
-                    ErrorMessage="Enter Category ID" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="txtDescription" CssClass="control-label txt3" runat="server" Width="200px"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="equiredFieldValidator12" runat="server" 
+            ErrorMessage="Enter Category ID" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
+            
+                       <asp:RegularExpressionValidator Display = "Dynamic" 
+                       ControlToValidate = "txtDescription" ID="RegularExpressionValidator1" 
+                       ValidationExpression = "^[\s\S]{3,200}$" 
+                       runat="server" ErrorMessage="Minimum 3 characters ,Maximum 200 characters allowed.">
+                       </asp:RegularExpressionValidator>   
+            
+            
         </div>
+        
         <div style=" text-align:center;">
             <asp:Button ID="btnUpdateCate" CssClass="btnCus" runat="server" Text="Save" 
             onclick="UpdateCate_Click" />
             <asp:Button CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
             onclick="DelteCate_Click" CausesValidation="False" />
         </div>
+        
      </div>   
 </asp:Content>
 

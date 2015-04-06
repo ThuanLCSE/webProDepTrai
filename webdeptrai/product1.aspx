@@ -13,6 +13,13 @@
                     <asp:TextBox ID="txtProductName"  CssClass="form-control txt2" runat="server" ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                     ErrorMessage="Enter Category Name" ControlToValidate="txtProductName"></asp:RequiredFieldValidator>
+                    
+                       <asp:RegularExpressionValidator Display = "Dynamic" 
+                       ControlToValidate = "txtProductName" ID="RegularExpressionValidator7" 
+                       ValidationExpression = "^[\s\S]{3,40}$" 
+                       runat="server" ErrorMessage="Minimum 3 characters ,Maximum 40 characters allowed.">
+                       </asp:RegularExpressionValidator>
+                    
              </div>
              
             <div class="form-group">
@@ -65,31 +72,38 @@
                     <asp:TextBox ID="txtUnitPrice" CssClass="form-control txt5" runat="server"></asp:TextBox>
                     
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                        ErrorMessage="Enter unit Price" ControlToValidate="txtUnitPrice"></asp:RequiredFieldValidator>
+                        ErrorMessage="Enter unit Price" ControlToValidate="txtUnitPrice">
+                    </asp:RequiredFieldValidator>
+                    
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                         ControlToValidate="txtUnitPrice" ErrorMessage="RegularExpressionValidator" 
-                        ValidationExpression="\d*\.\d*"></asp:RegularExpressionValidator>
+                        ValidationExpression="\d*\.\d*">
+                    </asp:RegularExpressionValidator>
              </div>
+             
               <div class="form-group">
                 <label class="control-label  " > Discontinued</label>
-                <td>
-                <asp:RadioButtonList  CssClass=" txt6"  ID="RadioButtonList1" runat="server">
-                    <asp:ListItem Selected="True">True</asp:ListItem>
-                    <asp:ListItem>False</asp:ListItem>
-                </asp:RadioButtonList>
                 
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-                    ControlToValidate="RadioButtonList1" ErrorMessage="RequiredFieldValidator" 
-                    Enabled="False"></asp:RequiredFieldValidator>
-                    </td>
+                <td>
+                      <asp:RadioButtonList  CssClass=" txt6"  ID="RadioButtonList1" runat="server">
+                      <asp:ListItem Selected="True">True</asp:ListItem>
+                      <asp:ListItem>False</asp:ListItem>
+                      </asp:RadioButtonList>
+                
+                      <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                         ControlToValidate="RadioButtonList1" ErrorMessage="RequiredFieldValidator" 
+                         Enabled="False">
+                      </asp:RequiredFieldValidator>
+               </td>
                </div>
+               
           <div style=" text-align:center;">
-           <asp:Button   CssClass="btnCus"   ID="btnUpdateCate"  runat="server" Text="Save" 
-            onclick="UpdateCate_Click" />
-        <asp:Button  CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
-            onclick="DelteCate_Click" />
-            </div>
-        </div>
+                 <asp:Button   CssClass="btnCus"   ID="btnUpdateCate"  runat="server" Text="Save" 
+                 onclick="UpdateCate_Click" />
+                 <asp:Button  CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
+                 onclick="DelteCate_Click" />
+          </div>
+          </div>
         
 </asp:Content>
 
