@@ -99,6 +99,30 @@
    
    
         </div>
+        <div  style="display:none;">
+<div  style="display:none; float: right;" >
+  <asp:ContentPlaceHolder id="panelFunctionDet"  runat="server" >
+        </asp:ContentPlaceHolder>
+</div >
+      <div  role="presentation" style="   display: inline;  width: 40px;" class="dropdown">
+        <button id="drop6" href="#" class="btnCus" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Search
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop6">
+            <div style=" float: right;" >
+              <asp:ContentPlaceHolder id="panelSearchDet" runat="server">
+          
+                </asp:ContentPlaceHolder>
+    
+    </div>  
+        </ul>
+        
+        <button ID="btnNew2" type="button" onclick="showModalDet();" class="btnCus"  Width="65px" 
+                       >New</button>
+      </div>
+   
+   
+        </div>
     <asp:ContentPlaceHolder ID="panelTable" runat="server">
     
     </asp:ContentPlaceHolder>
