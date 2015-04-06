@@ -161,8 +161,13 @@
             
         </div>
         <div style=" text-align:center;">
-<asp:Button CssClass="btnCus"  ID="btnDel" runat="server" Text="Delete" Width="68px" 
+<asp:Button CssClass="btnCus"  ID="btnDel" runat="server" OnClick="btnDel_Click" Text="Delete" Width="68px" 
                       CausesValidation="true" />
+                     
+                    <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
+                        TargetControlID="btnDel"
+                        ConfirmText="Are you sure you want Delete?" 
+                        OnClientCancel="alert('don't DO THAT again!');" />
          <asp:Button ID="btnSave"   CssClass="btnCus" runat="server" Text="Save" Width="63px" 
                       />
                       </div>
