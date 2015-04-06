@@ -3,29 +3,42 @@
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
     <div width="100%">
+    
        <div class="form-group">
             <label class="control-label  " >Shipper ID:</label>
             <asp:TextBox ID="lblShipperID" CssClass="control-label txt1 " runat="server"></asp:TextBox>
        </div>
+       
        <div class="form-group">
             <label class="control-label" >Company Name:</label>
             <asp:TextBox CssClass="form-control txt2" ID="txtCompanyName" runat="server" Width="200px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                    ErrorMessage="Enter Company Name" ControlToValidate="txtCompanyName"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+            ErrorMessage="Enter Company Name" ControlToValidate="txtCompanyName"></asp:RequiredFieldValidator>
+            
+                 <asp:RegularExpressionValidator Display = "Dynamic" 
+                 ControlToValidate = "txtCompanyName" ID="RegularExpressionValidator10" ValidationExpression = "^[\s\S]{3,40}$" 
+                 runat="server" ErrorMessage="Minimum 3 characters ,Maximum 40 characters allowed.">
+                 </asp:RegularExpressionValidator> 
        </div>
+       
        <div class="form-group">
             <label class="control-label" >Phone:</label>
             <asp:TextBox CssClass="form-control txt3" ID="txtPhone" runat="server" Width="200px"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
-                    ErrorMessage="Enter number XXXXXXXXXX" 
-                    ValidationExpression="\d{11}" ControlToValidate="txtPhone"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+            ErrorMessage="Enter number XXXXXXXXXX" 
+            ValidationExpression="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$" 
+            ControlToValidate="txtPhone"></asp:RegularExpressionValidator>
+            
+            
        </div>
+       
        <div style=" text-align:center;">
             <asp:Button ID="btnUpdateShipper" runat="server" CssClass="btnCus"  Text="Save" 
-                    onclick="btnUpdateShipper_Click" />
-                     <asp:Button ID="btnDelteShipper" runat="server" Text="Delete" 
-                onclick="btnDelteShipper_Click" CssClass="btnCus"  CausesValidation="False" />
+            onclick="btnUpdateShipper_Click" />
+            <asp:Button ID="btnDelteShipper" runat="server" Text="Delete" 
+            onclick="btnDelteShipper_Click" CssClass="btnCus"  CausesValidation="False" />
        </div>
+       
     </div>
 </asp:Content>
 
