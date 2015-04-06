@@ -38,9 +38,11 @@ public partial class Customer : System.Web.UI.Page
     }
     protected void DeleteCustomer()
     {
+       
         if (lblCusID.Text != "")
         {
-            new customer().delete(Int32.Parse(lblCusID.Text));
+            Response.Write("<script language=\"javascript\">alert(\'Khong duoc delete mong THAY THONG CAM\');</script>");
+           // new customer().delete(Int32.Parse(lblCusID.Text));
 
             LoadCustomer();
         }

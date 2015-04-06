@@ -1,4 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="product1.aspx.cs" Inherits="product1" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
         <div width="100%">
@@ -102,6 +103,10 @@
                  onclick="UpdateCate_Click" />
                  <asp:Button  CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
                  onclick="DelteCate_Click" />
+                    <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
+                        TargetControlID="btnDelteCate"
+                        ConfirmText="Are you sure you want Delete?" 
+                        OnClientCancel="cancel" />
           </div>
           </div>
         
@@ -124,8 +129,8 @@
     <div>
   
         <asp:Button CssClass="btnCus"  ID="btnClearCate" runat="server" Text="Load" onclick="Clear_Click" />
-        <br />
-       
+         <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
     </div>
 </asp:Content>
 

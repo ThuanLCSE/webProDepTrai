@@ -167,7 +167,7 @@
                     <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
                         TargetControlID="btnDel"
                         ConfirmText="Are you sure you want Delete?" 
-                        OnClientCancel="alert('don't DO THAT again!');" />
+                        OnClientCancel="cancel" />
          <asp:Button ID="btnSave"   CssClass="btnCus" runat="server" Text="Save" Width="63px" 
                       />
                       </div>

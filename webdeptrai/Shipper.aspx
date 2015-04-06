@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Shipper.aspx.cs" Inherits="Shipper" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
@@ -25,7 +26,7 @@
             <label class="control-label" >Phone:</label>
             <asp:TextBox CssClass="form-control txt3" ID="txtPhone" runat="server" Width="200px"></asp:TextBox>
             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
-            ErrorMessage="Enter number XXXXXXXXXX" 
+            ErrorMessage="Enter number (123) 456-7890" 
             ValidationExpression="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$" 
             ControlToValidate="txtPhone"></asp:RegularExpressionValidator>
             
@@ -37,6 +38,10 @@
             onclick="btnUpdateShipper_Click" />
             <asp:Button ID="btnDelteShipper" runat="server" Text="Delete" 
             onclick="btnDelteShipper_Click" CssClass="btnCus"  CausesValidation="False" />
+             <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
+                        TargetControlID="btnDelteShipper"
+                        ConfirmText="Are you sure you want Delete?" 
+                        OnClientCancel="cancel" />
        </div>
        
     </div>
@@ -59,6 +64,8 @@
             <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
                Text="Load" onclick="btnLoad_Click" />        
         </div>
+          <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
 </asp:Content>
 
 <%--<asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">

@@ -95,5 +95,7 @@ function showModalPro(v1, v2, v3, v4, v5, v6) {
     $("#editModal").modal();
 }
 
-
+function calcel() {
+    alert('do\' not DO THAT again!');
+}
 

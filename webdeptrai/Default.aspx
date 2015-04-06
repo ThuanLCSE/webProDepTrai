@@ -174,5 +174,5 @@
 </asp:Content>
 
 <asp:Content id="tableContent" ContentPlaceHolderID="panelTable" runat="server">
-
+    <asp:Image ID="Image1" runat="server" ImageUrl="url(css\le-petit-nicolas-et-les-copains-3-728.jpg)" Width="500px" Height="500px" />
 </asp:Content>

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master"  AutoEventWireup="true" CodeFile="Supplier1.aspx.cs" Inherits="Supplier1" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server"> 
       <div width="100%">
@@ -119,7 +120,7 @@
                     ErrorMessage="Enter Phone number" ControlToValidate="txtPhone"></asp:RequiredFieldValidator>
                     
                  <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-                 ControlToValidate="txtPhone" ErrorMessage="RegularExpressionValidator - Not valid data" 
+                 ControlToValidate="txtPhone" ErrorMessage="Format phone: (123) 456-7890" 
                  ValidationExpression="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"></asp:RegularExpressionValidator>
         
         </div>   
@@ -140,6 +141,10 @@
                     onclick="UpdateCate_Click" />
                     <asp:Button CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
                     onclick="DelteCate_Click" />
+                      <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
+                        TargetControlID="btnDelteCate"
+                        ConfirmText="Are you sure you want Delete?" 
+                        OnClientCancel="cancel" />
         </div>
         </div>
         
@@ -168,6 +173,8 @@
 <asp:Content id="functionContent" ContentPlaceHolderID="panelFunction" runat="server">
   <asp:Button CssClass="btnCus"  ID="btnLoad" runat="server" CausesValidation="False" 
                        Text="Load" />
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
     </asp:Content>
 <asp:Content id="tableContent" ContentPlaceHolderID="panelTable" runat="server">
    
