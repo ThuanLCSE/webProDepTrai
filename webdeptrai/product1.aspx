@@ -2,61 +2,74 @@
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
         <div width="100%">
-              <div class="form-group">
-                <label class="control-label  " > Product ID :</label>
-                       <asp:TextBox ID="lblProID"  CssClass="control-label txt1" runat="server"></asp:TextBox>
-              </div>
+        
              <div class="form-group">
-                <label class="control-label  " >ProDuct Name :</label>
+                     <label class="control-label  " > Product ID :</label>
+                     <asp:TextBox ID="lblProID"  CssClass="control-label txt1" runat="server"></asp:TextBox>
+             </div>
+             
+             <div class="form-group">
+                    <label class="control-label  " >ProDuct Name :</label>
                     <asp:TextBox ID="txtProductName"  CssClass="form-control txt2" runat="server" ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                        ErrorMessage="Enter Category Name" ControlToValidate="txtProductName"></asp:RequiredFieldValidator>
+                    ErrorMessage="Enter Category Name" ControlToValidate="txtProductName"></asp:RequiredFieldValidator>
              </div>
+             
             <div class="form-group">
-                <label class="control-label  " >Supplier Name :</label>
+                    <label class="control-label  " >Supplier Name :</label>
+                    
                     <asp:DropDownList ID="DropDownList3"  CssClass="form-control txt3"  runat="server" 
                         DataSourceID="suppliername" DataTextField="companyname" 
                         DataValueField="supplierid" 
                         onselectedindexchanged="DropDownList3_SelectedIndexChanged">
                     </asp:DropDownList>
+                    
                     <asp:SqlDataSource ID="suppliername" runat="server" 
                         ConnectionString="server=localhost;database=TSQLFundamentals2008;uid=sa;pwd=123456" 
                         SelectCommand="SELECT companyname,supplierid FROM Production.Suppliers">
-                    </asp:SqlDataSource>
-                   
+                    </asp:SqlDataSource> 
             </div>
             
-           <div class="form-group">
+            
+            <div class="form-group">
                 <label class="control-label  " >  Category Name :</label>
+                
                     <asp:DropDownList ID="DropDownList2"  CssClass="form-control txt4"  runat="server" 
                         DataSourceID="categorydataa"  DataTextField="categoryname" 
                         DataValueField="categoryid" 
                         onselectedindexchanged="DropDownList2_SelectedIndexChanged" >
                         <asp:ListItem Enabled="False">Choose category</asp:ListItem>
                     </asp:DropDownList>
-                        <asp:SqlDataSource ID="categorydataa" runat="server" 
+                    
+                    <asp:SqlDataSource ID="categorydataa" runat="server" 
                         ConnectionString="server=localhost;database=TSQLFundamentals2008;uid=sa;pwd=123456" 
                         SelectCommand="SELECT categoryname, categoryid FROM Production.Categories">
                     </asp:SqlDataSource>
-                        <asp:DropDownList ID="DropDownList6" runat="server" 
+                    
+                    <asp:DropDownList ID="DropDownList6" runat="server" 
                         DataSourceID="categoryid" DataTextField="categoryid" 
                         DataValueField="categoryid" BackColor="White" ForeColor="White" 
                         Height="0px" Visible="False">
                     </asp:DropDownList>
+                    
                     <asp:SqlDataSource ID="categoryid" runat="server" 
-                        ConnectionString="server=localhost;database=TSQLFundamentals2008;uid=sa;pwd=123456" SelectCommand="Select categoryid FROm Production.Categories
-"></asp:SqlDataSource>
-                  </div>
+                        ConnectionString="server=localhost;database=TSQLFundamentals2008;uid=sa;pwd=123456" 
+                        SelectCommand="Select categoryid FROm Production.Categories">
+                    </asp:SqlDataSource>
+                    
+            </div>
             
              <div class="form-group">
-                <label class="control-label  " > Price :</label>
+                    <label class="control-label  " > Price :</label>
+                    
                     <asp:TextBox ID="txtUnitPrice" CssClass="form-control txt5" runat="server"></asp:TextBox>
+                    
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                         ErrorMessage="Enter unit Price" ControlToValidate="txtUnitPrice"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                         ControlToValidate="txtUnitPrice" ErrorMessage="RegularExpressionValidator" 
                         ValidationExpression="\d*\.\d*"></asp:RegularExpressionValidator>
-               </div>
+             </div>
               <div class="form-group">
                 <label class="control-label  " > Discontinued</label>
                 <td>
