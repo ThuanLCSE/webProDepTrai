@@ -118,7 +118,7 @@
         </ul>
         
         <button ID="btnNew2" type="button" onclick="showModalOrdDet();" class="btnCus"  Width="65px" 
-                       >New</button>
+                       >Add Detail</button>
       </div>
    
    

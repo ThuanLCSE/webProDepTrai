@@ -24,7 +24,7 @@ using System.Data;
             SqlParameter param = new SqlParameter("@orderid", SqlDbType.Int);
             param.Value = id;
             cmd.Parameters.Add(param);
-            param = new SqlParameter("@productid", SqlDbType.Int);
+            param = new SqlParameter("@productid", SqlDbType.NVarChar);
             param.Value = Int32.Parse(str[0]);
             cmd.Parameters.Add(param);
             param = new SqlParameter("@unitprice", SqlDbType.Money);

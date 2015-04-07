@@ -141,7 +141,7 @@
          <div>
                    <asp:Button CssClass="btnCus" ID="btnUpdateCate" runat="server" Text="Save" 
                     onclick="UpdateCate_Click" />
-                   <asp:Button CssClass="btnCus" ID="btnDelteCate" runat="server" Text="Delete" 
+                   <asp:Button CssClass="btnCus" CausesValidation="false" ID="btnDelteCate" runat="server" Text="Delete" 
                     onclick="DelteCate_Click" />
                       <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
                         TargetControlID="btnDelteCate"

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"  CodeFile="Employee.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"  CodeFile="Employee.aspx.cs" Inherits="Employee" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content id="inputContent" ContentPlaceHolderID="panelEdit" runat="server">
@@ -128,6 +128,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                         ControlToValidate="txtPost" Display="Dynamic" 
                         ErrorMessage="Please enter postal code"></asp:RequiredFieldValidator>
+                 <asp:CompareValidator Display="Dynamic"  ID="CompareValidator3" runat="server" ErrorMessage="Number only" Type="Integer" Operator="DataTypeCheck" ControlToValidate="TxtPost"></asp:CompareValidator>
              </div>
              <div class="form-group">
                 <label class="control-label " >Country:</label>
@@ -173,14 +174,14 @@
             
         </div>
         <div style=" text-align:center;">
-<asp:Button CssClass="btnCus"  ID="btnDel" runat="server" OnClick="btnDel_Click" Text="Delete" Width="68px" 
-                      CausesValidation="true" />
+<asp:Button CssClass="btnCus"  ID="btnDel" runat="server" UseSubmitBehavior="false" OnClick="btnDel_Click" Text="Delete" Width="68px" 
+                       />
                      
-                    <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" 
+                    <ajaxToolkit:ConfirmButtonExtender  ID="ConfirmButtonExtender1" runat="server" 
                         TargetControlID="btnDel"
                         ConfirmText="Are you sure you want Delete?" 
-                        OnClientCancel="alert('don't DO THAT again!');" />
-         <asp:Button ID="btnSave" CausesValidation="true"  CssClass="btnCus" runat="server" Text="Save" Width="63px" 
+                        OnClientCancel="cancel" />
+         <asp:Button ID="btnSave" CausesValidation="true" UseSubmitBehavior="false" CssClass="btnCus" runat="server" Text="Save" Width="63px" 
                       />
                       </div>
 </asp:Content>

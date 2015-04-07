@@ -12,7 +12,7 @@ using System.Xml.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
-public partial class _Default : System.Web.UI.Page 
+public partial class Employee : System.Web.UI.Page 
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -36,6 +36,8 @@ public partial class _Default : System.Web.UI.Page
     }
     void btnSearch_Click(object sender, EventArgs e)
     {
+        if (txtSearch.Text!="")
+        {
             List<String> list = new List<string>();
             if (DDLSearch.SelectedValue.ToString().Equals("Last Name"))
             {
@@ -78,6 +80,9 @@ public partial class _Default : System.Web.UI.Page
             gridEmp.DataSource = null;
             gridEmp.DataSource = dr;
             gridEmp.DataBind();
+        }
+        else
+            Response.Write("<script language=\"javascript\">alert(\'"+"dien cai j zo de search di"+"\');</script>");
         
     }
 
@@ -110,14 +115,20 @@ public partial class _Default : System.Web.UI.Page
             list.Add(txtCoun.Text);
             list.Add(txtPhone.Text);
             list.Add(txtMrgid.SelectedValue.ToString());
+            try
+            {
+                if (lblID.Text.Equals(""))
 
-            if (lblID.Text.Equals(""))
+                    new employee().insert(list);
 
-                new employee().insert(list);
+                else
+                    new employee().update(Int32.Parse(lblID.Text), list);
+            }
+            catch (Exception ex)
+                {
+                    Response.Write("<script language=\"javascript\">alert(\'"+ex.Message+"\');</script>");
 
-            else
-                new employee().update(Int32.Parse(lblID.Text), list);
-
+                }
             LoadTable();
         }
     }

@@ -280,6 +280,9 @@
         <asp:DropDownList ID="ddlSearch" CssClass="searchFunc"  runat="server">
             <asp:ListItem>Customer Name</asp:ListItem>
             <asp:ListItem>Employee Name</asp:ListItem>
+            <asp:ListItem>Order Date</asp:ListItem>
+            <asp:ListItem>Require Date</asp:ListItem>
+            <asp:ListItem>Shipped Date</asp:ListItem>
             <asp:ListItem>Shipper Name</asp:ListItem>
             <asp:ListItem>Freight</asp:ListItem>
             <asp:ListItem>Ship Name</asp:ListItem>

@@ -15,31 +15,34 @@ using System.Collections.Generic;
 
 public partial class Order : System.Web.UI.Page
 {
+    List<string> product;
     protected void Page_Load(object sender, EventArgs e)
     {
         LoadOrder();
+        product = new List<string>();
         gvOrder.RowDataBound += new GridViewRowEventHandler(gvOrder_RowDataBound);
         gvOrderDetail.RowDataBound += new GridViewRowEventHandler(gvOrderDetail_RowDataBound);
         btnDeleteDetail.Click += new EventHandler(btnDeleteDetail_Click);
-        btnUpdateDetail.Click += new EventHandler(btnUpdateDetail2_Click);
     }
 
    
     
    protected void btnUpdateDetail2_Click(object sender, EventArgs e)
     {
+        foreach (GridViewRow r in gvOrderDetail.Rows)
+            product.Add(r.Cells[1].Text);
             List<String> list = new List<string>();
             list.Add(this.DDLProductname.SelectedValue.ToString());
             list.Add(this.txtUnitDetail.Text);
             list.Add(this.txtQuantilyDetail.Text);
             list.Add(this.txtDiscountDetail.Text);
 
-            if (!lblOrderID.Text.Equals(""))
+            if (product.IndexOf(DDLProductname.SelectedValue.ToString())!=-1)
             {
 
                 new orderDetail().update(int.Parse(lblOrderID.Text), list);
             }
-            
+            else new orderDetail().insert(int.Parse(lblOrderID.Text), list);
             System.Data.SqlClient.SqlDataReader dr = (new orderDetail()).searchByID(int.Parse(lblOrderID.Text));
             gvOrderDetail.DataSource = dr;
             gvOrderDetail.DataBind();
@@ -287,6 +290,12 @@ public partial class Order : System.Web.UI.Page
             searchwith("Orders.shippostalcode");
         if (ddlSearch.SelectedValue.ToString().Equals("Ship Country"))
             searchwith("Orders.shipcountry");
+        if (ddlSearch.SelectedValue.ToString().Equals("Order Date"))
+            searchwith("CONVERT(VARCHAR(10), Orders.orderdate, 101)");
+        if (ddlSearch.SelectedValue.ToString().Equals("Require Date"))
+            searchwith("CONVERT(VARCHAR(10), Orders.requireddate, 101)");
+        if (ddlSearch.SelectedValue.ToString().Equals("Shipped Date"))
+            searchwith("CONVERT(VARCHAR(10), Orders.shippeddate, 101)");
 
     }
 
@@ -302,9 +311,9 @@ public partial class Order : System.Web.UI.Page
             "Orders.orderid," +
             "Customers.companyname," +
             "Employees.lastname + ' ' + Employees.firstname as fullname ," +
-            " Orders.orderdate," +
-            "Orders.requireddate," +
-            "Orders.shippeddate," +
+            "CONVERT(VARCHAR(10), Orders.orderdate, 101)," +
+            "CONVERT(VARCHAR(10), Orders.requireddate, 101)," +
+            "CONVERT(VARCHAR(10), Orders.shippeddate, 101)," +
             "Shippers.companyname," +
             "Orders.freight," +
             "Orders.shipname," +
@@ -321,7 +330,7 @@ public partial class Order : System.Web.UI.Page
         //
         if (type.Equals("Customers.companyname"))
         {
-            sql += type+ " LIKE N'%" + txtSearch.Text + "%'";
+            sql +=  type +" LIKE N'%" + txtSearch.Text + "%'" ;
         }
         if (type.Equals("Employees.lastname + ' ' + Employees.firstname"))
         {
@@ -356,6 +365,18 @@ public partial class Order : System.Web.UI.Page
             sql += type + " LIKE N'%" + txtSearch.Text + "%'";
         }
         if (type.Equals("Orders.shipcountry"))
+        {
+            sql += type + " LIKE N'%" + txtSearch.Text + "%'";
+        }
+        if (type.Equals("CONVERT(VARCHAR(10), Orders.orderdate, 101)"))
+        {
+            sql += type + " LIKE N'%" + txtSearch.Text + "%'";
+        }
+        if (type.Equals("CONVERT(VARCHAR(10), Orders.requireddate, 101)"))
+        {
+            sql += type + " LIKE N'%" + txtSearch.Text + "%'";
+        }
+        if (type.Equals("CONVERT(VARCHAR(10), Orders.shippeddate, 101)"))
         {
             sql += type + " LIKE N'%" + txtSearch.Text + "%'";
         }
