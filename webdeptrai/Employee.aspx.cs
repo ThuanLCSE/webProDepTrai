@@ -18,6 +18,8 @@ public partial class Employee : System.Web.UI.Page
     {
         LoadTable();
         CompareValidator1.ValueToCompare = DateTime.Now.ToShortDateString();
+        CompareValidator21.ValueToCompare = DateTime.Now.ToShortDateString();
+
        // btnNew.Click += new EventHandler(btnNew_Click);
         btnDel.Click += new EventHandler(btnDel_Click);
         btnSave.Click += new EventHandler(btnSave_Click);

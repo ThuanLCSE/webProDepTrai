@@ -22,7 +22,6 @@ public partial class Order : System.Web.UI.Page
         product = new List<string>();
         gvOrder.RowDataBound += new GridViewRowEventHandler(gvOrder_RowDataBound);
         gvOrderDetail.RowDataBound += new GridViewRowEventHandler(gvOrderDetail_RowDataBound);
-        btnDeleteDetail.Click += new EventHandler(btnDeleteDetail_Click);
     }
 
    
@@ -36,13 +35,20 @@ public partial class Order : System.Web.UI.Page
             list.Add(this.txtUnitDetail.Text);
             list.Add(this.txtQuantilyDetail.Text);
             list.Add(this.txtDiscountDetail.Text);
-
-            if (product.IndexOf(DDLProductname.SelectedValue.ToString())!=-1)
+            try
             {
+                if (product.IndexOf(DDLProductname.SelectedValue.ToString()) != -1)
+                {
 
-                new orderDetail().update(int.Parse(lblOrderID.Text), list);
+                    new orderDetail().update(int.Parse(lblOrderID.Text), list);
+                }
+                else new orderDetail().insert(int.Parse(lblOrderID.Text), list);
             }
-            else new orderDetail().insert(int.Parse(lblOrderID.Text), list);
+            catch (Exception ex)
+            {
+                Response.Write("<script language=\"javascript\">alert(\'" + ex.Message + "\');</script>");
+
+            }
             System.Data.SqlClient.SqlDataReader dr = (new orderDetail()).searchByID(int.Parse(lblOrderID.Text));
             gvOrderDetail.DataSource = dr;
             gvOrderDetail.DataBind();

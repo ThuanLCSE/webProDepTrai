@@ -67,6 +67,7 @@
             <label class="control-label" > Shipped Date:</label>
                 <asp:TextBox ID="txtShippedDate"  CssClass="form-control  txt6" runat="server"></asp:TextBox>
 
+    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="shipper must after" ControlToValidate="txtShippedDate" ControlToCompare="txtRequireDate" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>
                 <ajaxToolkit:CalendarExtender ID="txtShippedDate_CalendarExtender" 
                     runat="server" Enabled="True" TargetControlID="txtShippedDate">
                 </ajaxToolkit:CalendarExtender>
@@ -256,7 +257,7 @@
                                            </div>
             </div>
         <div style=" text-align:center;">
-        <asp:Button  CssClass="btnCus"  ID="btnUpdateDetail" runat="server" Text="Save" 
+        <asp:Button  CssClass="btnCus" CausesValidation="false" ID="btnUpdateDetail" runat="server" Text="Save" 
             onclick="btnUpdateDetail2_Click"  UseSubmitBehavior="False" />
         <asp:Button  CssClass="btnCus"  ID="btnDeleteDetail" runat="server" Text="Delete" 
             onclick="btnDeleteDetail_Click" UseSubmitBehavior="False" />     

@@ -81,6 +81,9 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
                         ControlToValidate="txtHireDate" Display="Dynamic" 
                         ErrorMessage="Please enter DOB"></asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="CompareValidator21" runat="server"
+                  ErrorMessage="much less than TODAY" ControlToValidate="txtHireDate" Type="Date" Enabled="True" Operator="LessThan"></asp:CompareValidator>
+               
                     <asp:CompareValidator ID="CompareValidator2" runat="server" 
                     ErrorMessage="much more than birthday" ControlToValidate="txtHireDate" ControlToCompare="txtDateOfBirth" Type="Date" Operator="GreaterThan"></asp:CompareValidator>
                </div>

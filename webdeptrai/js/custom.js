@@ -122,7 +122,10 @@ function showModal() {
     $("#editModal").modal();
 }
 function showModalDet() {
-    $(".txt1").val('');
+     $(".txt2").val('');
+    $(".txt3").val('');
+    $(".txt4").val('');
+    $(".txt5").val('');
     $("#editModalDet").modal();
 }
 function showModalCat(v1, v2, v3) {

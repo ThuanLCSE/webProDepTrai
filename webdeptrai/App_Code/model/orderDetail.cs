@@ -39,9 +39,17 @@ using System.Data;
             cmd.ExecuteNonQuery();
             closeConnection();
                 }
-            catch (Exception e)
+            catch (SqlException ex)
             {
-                throw e;
+                string error = "";
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    error =
+                        " Message: " + ex.Errors[i].Message +
+                        " Procedure: " + ex.Errors[i].Procedure;
+                }
+                throw new Exception(error);
+
             }
             return true;
         }
@@ -72,9 +80,17 @@ using System.Data;
             cmd.ExecuteNonQuery();
             closeConnection();
               }
-            catch (Exception e)
+            catch (SqlException ex)
             {
-                
+                string error = "";
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    error =
+                        " Message: " + ex.Errors[i].Message +
+                        " Procedure: " + ex.Errors[i].Procedure;
+                }
+                throw new Exception(error);
+
             }
             return true;
         }
