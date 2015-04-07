@@ -64,6 +64,8 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                         ControlToValidate="txtDateOfBirth" Display="Dynamic" 
                         ErrorMessage="Please enter Date of Birth"></asp:RequiredFieldValidator>
+                 <asp:CompareValidator ID="CompareValidator1" runat="server"
+                  ErrorMessage="much less than TODAY" ControlToValidate="txtDateOfBirth" Type="Date" Enabled="True" Operator="LessThan"></asp:CompareValidator>
                    
                </div>
                 <div class="form-group">
@@ -74,10 +76,13 @@
                   <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
                     runat="server" Enabled="True" TargetControlID="txtHireDate">
                 </ajaxToolkit:CalendarExtender>
+                    <asp:CustomValidator  OnServerValidate="ValidateDuration" ID="CustomValidator1" runat="server" 
+                    ErrorMessage="much be more than 15 years" Display="Dynamic"  ControlToValidate="txtHireDate"></asp:CustomValidator>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
                         ControlToValidate="txtHireDate" Display="Dynamic" 
                         ErrorMessage="Please enter DOB"></asp:RequiredFieldValidator>
-                   
+                    <asp:CompareValidator ID="CompareValidator2" runat="server" 
+                    ErrorMessage="much more than birthday" ControlToValidate="txtHireDate" ControlToCompare="txtDateOfBirth" Type="Date" Operator="GreaterThan"></asp:CompareValidator>
                </div>
              
            <div class="form-group">
@@ -155,12 +160,15 @@
                  </div>
             <div class="form-group">
                 <label class="control-label " >Manager ID:</label>
-                
-               
-                    <asp:TextBox CssClass="form-control txt14"  ID="txtMgrid" runat="server"></asp:TextBox>
-                   <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtMgrid"
-                        ErrorMessage="Value must be integer" Operator="GreaterThan" Type="Integer" ValueToCompare="0"></asp:CompareValidator>
-                    
+                    <asp:DropDownList ID="txtMrgid" CssClass="form-control  txt14" runat="server" 
+                    DataSourceID="EmpnameOfOrder" DataTextField="fullname" 
+                    DataValueField="empid">
+                    <asp:ListItem>Choose name</asp:ListItem>
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="EmpnameOfOrder" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:TSQLFundamentals2008ConnectionString %>" 
+                    SelectCommand="SELECT empid, lastname +' '+ firstname as fullname FROM HR.Employees">
+                </asp:SqlDataSource>
              </div>
             
         </div>
@@ -172,7 +180,7 @@
                         TargetControlID="btnDel"
                         ConfirmText="Are you sure you want Delete?" 
                         OnClientCancel="alert('don't DO THAT again!');" />
-         <asp:Button ID="btnSave"   CssClass="btnCus" runat="server" Text="Save" Width="63px" 
+         <asp:Button ID="btnSave" CausesValidation="true"  CssClass="btnCus" runat="server" Text="Save" Width="63px" 
                       />
                       </div>
 </asp:Content>
@@ -183,16 +191,7 @@
                         <asp:DropDownList ID="DDLSearch" CssClass="searchFunc" runat="server">
                             <asp:ListItem>Last Name</asp:ListItem>
                             <asp:ListItem>First Name</asp:ListItem>
-                            <asp:ListItem>Title</asp:ListItem>
-                            <asp:ListItem>Title of Courtesy</asp:ListItem>
-                            <asp:ListItem>Birthdate</asp:ListItem>
-                            <asp:ListItem>Hire Date</asp:ListItem>
-                            <asp:ListItem>Address</asp:ListItem>
-                            <asp:ListItem>City</asp:ListItem>
-                            <asp:ListItem>Region</asp:ListItem>
-                            <asp:ListItem>Postal Code</asp:ListItem>
-                            <asp:ListItem>Country</asp:ListItem>
-                            <asp:ListItem>Phone</asp:ListItem>
+                            <asp:ListItem>Until Hiredate</asp:ListItem>
                             <asp:ListItem>Manage ID</asp:ListItem>
                         </asp:DropDownList>
                         <asp:Button ID="btnSearch" CssClass="btnCus" runat="server" CausesValidation="False" 

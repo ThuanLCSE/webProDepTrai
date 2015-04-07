@@ -17,7 +17,7 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         LoadTable();
-        
+        CompareValidator1.ValueToCompare = DateTime.Now.ToShortDateString();
        // btnNew.Click += new EventHandler(btnNew_Click);
         btnDel.Click += new EventHandler(btnDel_Click);
         btnSave.Click += new EventHandler(btnSave_Click);
@@ -25,27 +25,60 @@ public partial class _Default : System.Web.UI.Page
         gridEmp.RowDataBound += new GridViewRowEventHandler(gridEmp_RowDataBound);
         gridEmp.SelectedIndexChanged += new EventHandler(gridEmp_SelectedIndexChanged);
     }
+    protected void ValidateDuration(object sender, ServerValidateEventArgs e)
+    {
+        DateTime start = DateTime.Parse(txtDateOfBirth.Text);
+        DateTime end = DateTime.Parse(txtHireDate.Text);
 
+        int months = end.Year - start.Year;
+
+        e.IsValid = months >= 15.0;
+    }
     void btnSearch_Click(object sender, EventArgs e)
     {
-        List<String> list = new List<string>();
-        if (DDLSearch.SelectedValue.ToString().Equals("Last Name"))
-        {
-            list.Add(txtSearch.Text);
-            list.Add("");
-         
-        }
-        else if (DDLSearch.SelectedValue.ToString().Equals("First Name"))
+            List<String> list = new List<string>();
+            if (DDLSearch.SelectedValue.ToString().Equals("Last Name"))
+            {
+                list.Add(txtSearch.Text);
+                list.Add("");
+                list.Add("");
+                list.Add("");
+                list.Add("");
+
+            }
+            else if (DDLSearch.SelectedValue.ToString().Equals("First Name"))
             {
                 list.Add("");
                 list.Add(txtSearch.Text);
-               
+                list.Add("");
+                list.Add("");
+                list.Add("");
+
             }
-      
-        SqlDataReader dr = new employee().search(list);
-        gridEmp.DataSource = null;
-        gridEmp.DataSource = dr;
-        gridEmp.DataBind();
+            else if (DDLSearch.SelectedValue.ToString().Equals("Until Hiredate"))
+            {
+                list.Add("");
+                list.Add("");
+                list.Add("");
+                list.Add(DateTime.Parse(txtSearch.Text).ToShortDateString());
+                list.Add("");
+
+            }
+            else if (DDLSearch.SelectedValue.ToString().Equals("Manage ID"))
+            {
+                list.Add("");
+                list.Add("");
+                list.Add("");
+                list.Add("");
+                list.Add(txtSearch.Text);
+
+            }
+
+            SqlDataReader dr = new employee().search(list);
+            gridEmp.DataSource = null;
+            gridEmp.DataSource = dr;
+            gridEmp.DataBind();
+        
     }
 
     protected void btnDel_Click(object sender, EventArgs e)
@@ -61,29 +94,32 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        List<String> list = new List<string>();
-        list.Add(this.txtFirstname.Text);
-        list.Add(this.txtLastName.Text);
-        list.Add(this.txtTitle.Text);
-        list.Add(txtCourse.Text);
-        list.Add(txtDateOfBirth.Text);
-        list.Add(txtHireDate.Text);
-        list.Add(txtAddress.Text);
-        list.Add(txtCity.Text);
-        list.Add(txtRegion.Text);
-        list.Add(TxtPost.Text);
-        list.Add(txtCoun.Text);
-        list.Add(txtPhone.Text);
-        list.Add(txtMgrid.Text);
+        if (Page.IsValid)
+        {
+            List<String> list = new List<string>();
+            list.Add(this.txtFirstname.Text);
+            list.Add(this.txtLastName.Text);
+            list.Add(this.txtTitle.Text);
+            list.Add(txtCourse.Text);
+            list.Add(txtDateOfBirth.Text);
+            list.Add(txtHireDate.Text);
+            list.Add(txtAddress.Text);
+            list.Add(txtCity.Text);
+            list.Add(txtRegion.Text);
+            list.Add(TxtPost.Text);
+            list.Add(txtCoun.Text);
+            list.Add(txtPhone.Text);
+            list.Add(txtMrgid.SelectedValue.ToString());
 
-        if (lblID.Text.Equals(""))
+            if (lblID.Text.Equals(""))
 
-            new employee().insert(list);
-     
-        else
-        new employee().update(Int32.Parse(lblID.Text), list);
+                new employee().insert(list);
 
-        LoadTable();
+            else
+                new employee().update(Int32.Parse(lblID.Text), list);
+
+            LoadTable();
+        }
     }
 
   

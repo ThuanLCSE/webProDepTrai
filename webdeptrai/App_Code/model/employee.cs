@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlTypes;
 
 
     public class employee:DTOabs
@@ -14,7 +15,7 @@ using System.Data;
             
         }
         #region objectInterface Members
-        
+
         public bool insert(List<string> str)
         {
             cmd.CommandType = CommandType.StoredProcedure;
@@ -58,14 +59,28 @@ using System.Data;
             param.Value = str[11];
             cmd.Parameters.Add(param);
             param = new SqlParameter("@mgrid", SqlDbType.Int);
-            if (str[12].CompareTo("")==0)
-            param.Value= DBNull.Value;
-            else param.Value=Int32.Parse(str[12]);
+            if (str[12].CompareTo("") == 0 || Int32.Parse(str[12]) < 0)
+                param.Value = DBNull.Value;
+            else param.Value = Int32.Parse(str[12]);
             cmd.Parameters.Add(param);
 
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.ExecuteNonQuery();
+                closeConnection();
+            }
+            catch (SqlException ex)
+            {
+                string error = "";
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    error =
+                        " Message: " + ex.Errors[i].Message +
+                        " Procedure: " + ex.Errors[i].Procedure;
+                }
+                throw new Exception(error);
 
-            closeConnection();
+            }
             return true;
         }
 
@@ -115,13 +130,28 @@ using System.Data;
             param.Value = str[11];
             cmd.Parameters.Add(param);
             param = new SqlParameter("@mgrid", SqlDbType.Int);
-            if (str[12].CompareTo("") == 0)
+            if (str[12].CompareTo("") == 0 || Int32.Parse(str[12]) < 0)
                 param.Value = DBNull.Value;
             else param.Value = Int32.Parse(str[12]);
             cmd.Parameters.Add(param);
             //
-            cmd.ExecuteNonQuery();
-            closeConnection();
+            try
+            {
+                cmd.ExecuteNonQuery();
+                closeConnection();
+            }
+            catch (SqlException ex)
+            {
+                string error = "";
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    error = " Message: " + ex.Errors[i].Message +
+
+                        " Procedure: " + ex.Errors[i].Procedure;
+                }
+                throw new Exception(error);
+
+            }
             return true;
         }
 
@@ -151,51 +181,30 @@ using System.Data;
         {
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "searchEmployee";
-            SqlParameter param;// = new SqlParameter("@id", SqlDbType.Int);
-            //param.Value = id;
-            //cmd.Parameters.Add(param);
+            SqlParameter param;
             param = new SqlParameter("@lastname", SqlDbType.VarChar, 20);
             param.Value = str[0];
             cmd.Parameters.Add(param);
             param = new SqlParameter("@firstname", SqlDbType.VarChar, 10);
             param.Value = str[1];
             cmd.Parameters.Add(param);
-            //param = new SqlParameter("@title", SqlDbType.VarChar, 30);
-            //param.Value = str[2];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@titleofcourtesy", SqlDbType.VarChar, 25);
-            //param.Value = str[3];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@birthdate", SqlDbType.DateTime);
-            //param.Value = str[4];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@hiredate", SqlDbType.DateTime);
-            //param.Value = str[5];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@address", SqlDbType.VarChar, 60);
-            //param.Value = str[6];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@city", SqlDbType.VarChar, 15);
-            //param.Value = str[7];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@region", SqlDbType.VarChar, 15);
-            //param.Value = str[8];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@postalcode", SqlDbType.VarChar, 10);
-            //param.Value = str[9];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@country", SqlDbType.VarChar, 15);
-            //param.Value = str[10];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@phone", SqlDbType.VarChar, 24);
-            //param.Value = str[11];
-            //cmd.Parameters.Add(param);
-            //param = new SqlParameter("@mgrid", SqlDbType.Int);
-            //if (str[12].CompareTo("") == 0)
-            //    param.Value = DBNull.Value;
-            //else param.Value = Int32.Parse(str[12]);
-            //cmd.Parameters.Add(param);
-            //
+            param = new SqlParameter("@maxdate", SqlDbType.DateTime);
+
+            param.Value = SqlDateTime.MaxValue;
+
+            cmd.Parameters.Add(param);
+            param = new SqlParameter("@mindate", SqlDbType.DateTime);
+            if (str[0] != "" || str[1] != "" || str[4] != "")
+                param.Value = SqlDateTime.MinValue;
+            else param.Value = str[3];
+            cmd.Parameters.Add(param);
+
+            param = new SqlParameter("@mngid", SqlDbType.Int);
+            if (str[4].CompareTo("") == 0 || Int32.Parse(str[4]) < 0)
+                param.Value = DBNull.Value;
+            else param.Value = Int32.Parse(str[4]);
+            cmd.Parameters.Add(param);
+
             SqlDataReader dr = cmd.ExecuteReader();
 
             return dr;
