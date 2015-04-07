@@ -111,8 +111,8 @@ function showModalPro(v1, v2, v3, v4, v5, v6) {
     $("#editModal").modal();
 }
 
-function calcel() {
-    alert('don\'t DO THAT again!');
+function cancel() {
+    alert('Cancel!!!');
 }
 $('.searchFunc').click(function(e) {
     e.stopPropagation();

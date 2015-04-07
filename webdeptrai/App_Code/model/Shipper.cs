@@ -71,7 +71,7 @@ using System.Data;
              }
             catch (Exception e)
             {
-                
+                throw new Exception();
             }
             return true;
        

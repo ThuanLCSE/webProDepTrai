@@ -55,16 +55,23 @@ using System.Data.SqlClient;
 
         public bool delete(int id)
         {
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "DeleteCategories";
-            cmd.Parameters.Clear();
+            try
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "DeleteCategories";
+                cmd.Parameters.Clear();
 
-            SqlParameter param = new SqlParameter("@id", SqlDbType.Int);
-            param.Value = id;
-            cmd.Parameters.Add(param);
-            //
-            cmd.ExecuteNonQuery();
-            closeConnection();
+                SqlParameter param = new SqlParameter("@id", SqlDbType.Int);
+                param.Value = id;
+                cmd.Parameters.Add(param);
+                //
+                cmd.ExecuteNonQuery();
+                closeConnection();
+            }
+            catch (Exception e)
+            {
+                throw new Exception();
+            }
             return true;
         }
 

@@ -68,13 +68,18 @@ public partial class Shipper : System.Web.UI.Page
 
     void DeleteShipper()
     {
-        if (lblShipperID.Text != "")
+        try
         {
-            new Shipper1().delete(Int32.Parse(lblShipperID.Text));
-            LoadShipper();
+            if (lblShipperID.Text != "")
+            {
+                new Shipper1().delete(Int32.Parse(lblShipperID.Text));
+                LoadShipper();
+            }
         }
-        else
-            Response.Write("<script language=\"javascript\">alert(\'Select before delete!!!\');</script>");
+        catch (Exception e)
+        {
+            Response.Write("<script language=\"javascript\">alert(\'Can not delete this supplier because he has in order!!!\');</script>");
+        }
     }
 
     void Search()
@@ -135,7 +140,6 @@ public partial class Shipper : System.Web.UI.Page
     protected void btnDelteShipper_Click(object sender, EventArgs e)
     {
         DeleteShipper();
-        LoadShipper();
     }
 
     protected void btnClearShipper_Click(object sender, EventArgs e)

@@ -88,13 +88,16 @@ public partial class Categories : System.Web.UI.Page
 
     protected void DelteCate_Click(object sender, EventArgs e)
     {
-        if (lblCateID.Text != "")
+        try
         {
             new Categori().delete(Int32.Parse(lblCateID.Text));
             LoadCategories();
         }
-        else
-            Response.Write("<script language=\"javascript\">alert(\'Select before delete!!!\');</script>");
+        catch (Exception ex)
+        {
+            Response.Write("<script language=\"javascript\">alert(\'Can not delete this category because it has in Product\');</script>"); 
+        }
+        
     }
 
     protected void Clear_Click(object sender, EventArgs e)
